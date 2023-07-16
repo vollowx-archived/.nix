@@ -1,15 +1,19 @@
+{ pkgs, ... }:
+
 {
   programs.lf = {
     enable = true;
     settings = {
       shell = "zsh";
       icons = true;
-      mouse = true;
       hidden = true;
       ignorecase = true;
-      radios = "1:2:3";
+      ratios = "1:2:3";
     };
-    previewer.source = ''
+    extraConfig = ''
+set mouse true
+    '';
+    previewer.source = pkgs.writeShellScript "previewer.sh" ''
 #!/usr/bin/env bash
 
 file=$1
@@ -21,7 +25,7 @@ y=$5
 mime=$(file -Lb --mime-type "$file")
 
 if [[ "$mime" =~ ^image ]]; then
-  kitty +kitten icat --silent --stdin no --transfer-mode file --place "$\{w}x$\{h}@$\{x}x$\{y}" "$file" </dev/null >/dev/tty
+  kitty +kitten icat --silent --stdin no --transfer-mode file --place "${w}x${h}@${x}x${y}" "$file" </dev/null >/dev/tty
   exit 1
 fi
 
