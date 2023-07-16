@@ -1,5 +1,5 @@
 {
-  gtk.enable = true;
+  imports = [ ./_home-gtk.nix ];
   xdg = {
     enable = true;
     mime.enable = true;

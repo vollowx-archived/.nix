@@ -1,8 +1,5 @@
 {
-  imports =
-    [
-      ./_home.nix
-    ];
+  imports = [ ./_home.nix ];
   home.sessionVariables = {
     # Wayland
     QT_QPA_PLATFORM = "wayland";

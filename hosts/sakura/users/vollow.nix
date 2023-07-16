@@ -7,7 +7,6 @@
     imports = [
       ../../../modules/programs/bat.nix
       ../../../modules/programs/firefox.nix
-      ../../../modules/programs/gtk.nix
       ../../../modules/graphical/sway/home.nix
     ];
 
