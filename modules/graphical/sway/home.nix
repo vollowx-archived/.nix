@@ -32,11 +32,12 @@
         eDP-1 = {
           bg = "~/.local/share/backgrounds/Nix.png fill";
         };
+        HDMI-A-1 = {
+          bg = "~/.local/share/backgrounds/Nix.png fill";
+        };
       };
 
-      startup = [
-        { command = "systemctl --user restart waybar"; always = true; }
-      ];
+      startup = [];
 
       keybindings =
         let

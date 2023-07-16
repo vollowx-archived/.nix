@@ -6,6 +6,7 @@
   home-manager.users.vollow = {
     imports = [
       ../../../modules/programs/bat.nix
+      ../../../modules/programs/lf.nix
       ../../../modules/programs/firefox.nix
       ../../../modules/graphical/sway/home.nix
     ];
