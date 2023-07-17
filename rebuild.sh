@@ -1,1 +1,1 @@
-sudo nixos-rebuild switch --flake ".#$1"
+doas nixos-rebuild switch --flake ".#$1"
