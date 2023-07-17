@@ -33,12 +33,6 @@
     initExtra = ''
     '';
 
-    profileExtra = ''
-      if [ "$(tty)" = "/dev/tty1" ]; then;
-        sway
-      fi
-    '';
-
     plugins = [
       {
         name = "zsh-nix-shell";
