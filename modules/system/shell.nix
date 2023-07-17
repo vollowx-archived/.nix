@@ -9,7 +9,7 @@
     };
     syntaxHighlighting = {
       enable = true;
-      highlighters = [ "main" "brackets" "pattern" "cursor" "regexp" "root" "line" ];
+      highlighters = [ "main" "brackets" "pattern" "regexp" "root" ];
     };
   };
 }
