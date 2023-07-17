@@ -1,5 +1,6 @@
 {
   imports = [ ./_home-gtk.nix ];
+
   xdg = {
     enable = true;
     mime.enable = true;
@@ -16,6 +17,7 @@
       createDirectories = true;
     };
   };
+
   programs.kitty = {
     enable  = true;
     shellIntegration.enableZshIntegration = true;
