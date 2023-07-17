@@ -8,7 +8,7 @@
       enable = true;
       strategy = [ "history" "completion" ];
     };
-    syntaxhighlighting = {
+    syntaxHighlighting = {
       enable = true;
       highlighters = [ "main" "brackets" "pattern" "cursor" "regexp" "root" "line" ];
     };
