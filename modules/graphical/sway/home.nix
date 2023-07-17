@@ -100,12 +100,20 @@ in {
           modufier = config.wayland.windowManager.sway.config.modifier;
         in lib.mkOptionDefault {
           "${modifier}+Escape" = "exec wlogout";
-	  "XF86AudioMute" = "exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
-	  "XF86AudioLowerVolume" = "exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%- -l 1.2";
-	  "XF86AudioRaiseVolume" = "exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+ -l 1.2";
+	  "--release Caps_Lock" = "exec swayosd --caps-lock";
+	  "XF86AudioMute" = "exec swayosd --output-volume mute-toggle";
+	  "XF86AudioLowerVolume" = "exec swayosd --output-volume lower";
+	  "XF86AudioRaiseVolume" = "exec swayosd --output-volume raise";
+	  "XF86MonBrightnessDown" = "exec swayosd --brightness lower";
+	  "XF86MonBrightnessUp" = "exec swayosd --brightness raise";
         };
     };
   };
 
   home.sessionVariables.XDG_CURRENT_DESKTOP = "sway";
+
+  services.swayosd = {
+    enable = true;
+    maxVolume = 120;
+  };
 }
