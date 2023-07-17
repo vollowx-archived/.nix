@@ -2,6 +2,6 @@
 
 {
   imports = [
-    # ./env.nix
+    ./shell.nix
   ];
 }

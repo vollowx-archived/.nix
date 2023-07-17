@@ -7,6 +7,7 @@
   imports =
     [
       ./hardware-configuration.nix
+      ../../modules/system
       ../../modules/network
       ../../modules/graphical/sway
 
