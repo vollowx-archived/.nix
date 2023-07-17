@@ -10,7 +10,11 @@ let
   surface1 = "#45475a";
   base = "#1e1e2e";
 in {
-  imports = [ ../_home-wayland.nix ];
+  imports =
+    [
+      ../_home-wayland.nix
+      ./_home-waybar.nix
+    ];
 
   wayland.windowManager.sway = {
     enable = true;
@@ -69,25 +73,25 @@ in {
         };
         placeholder = {
           background = base;
-	  border = overlay0;
-	  childBorder = overlay0;
-	  indicator = overlay0;
-	  text = text;
-	};
-	unfocused = {
+          border = overlay0;
+          childBorder = overlay0;
+          indicator = overlay0;
+          text = text;
+        };
+        unfocused = {
           background = base;
           border = surface1;
-	  childBorder = surface1;
-	  indicator = rosewater;
-	  text = text;
-	};
-	urgent = {
+          childBorder = surface1;
+          indicator = rosewater;
+          text = text;
+        };
+        urgent = {
           background = base;
-	  border = peach;
-	  childBorder = peach;
-	  indicator = overlay0;
-	  text = text;
-	};
+          border = peach;
+          childBorder = peach;
+          indicator = overlay0;
+          text = text;
+        };
       };
       gaps.inner = 4;
       window = {
@@ -98,6 +102,7 @@ in {
         titlebar = false;
         border = 3;
       };
+      bars = [];
 
       startup = [];
 
