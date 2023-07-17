@@ -48,26 +48,26 @@ in {
       seat = {
         "*" = {
           hide_cursor = "when-typing enable";
-	};
+        };
       };
 
       colors = {
         background = base;
-	focused = {
+        focused = {
           background = base;
-	  border = pink;
-	  childBorder = pink;
-	  indicator = rosewater;
-	  text = text;
-	};
-	focusedInactive = {
+          border = pink;
+          childBorder = pink;
+          indicator = rosewater;
+          text = text;
+        };
+        focusedInactive = {
           background = base;
-	  border = mauve;
-	  childBorder = mauve;
-	  indicator = rosewater;
-	  text = text;
-	};
-	placeholder = {
+          border = mauve;
+          childBorder = mauve;
+          indicator = rosewater;
+          text = text;
+        };
+        placeholder = {
           background = base;
 	  border = overlay0;
 	  childBorder = overlay0;
@@ -76,7 +76,7 @@ in {
 	};
 	unfocused = {
           background = base;
-	  border = surface1;
+          border = surface1;
 	  childBorder = surface1;
 	  indicator = rosewater;
 	  text = text;
@@ -90,8 +90,14 @@ in {
 	};
       };
       gaps.inner = 4;
-      window.border = 3;
-      floating.border = 3;
+      window = {
+        titlebar = false;
+        border = 3;
+      };
+      floating = {
+        titlebar = false;
+        border = 3;
+      };
 
       startup = [];
 
@@ -100,12 +106,13 @@ in {
           modufier = config.wayland.windowManager.sway.config.modifier;
         in lib.mkOptionDefault {
           "${modifier}+Escape" = "exec wlogout";
-	  "--release Caps_Lock" = "exec swayosd --caps-lock";
-	  "XF86AudioMute" = "exec swayosd --output-volume mute-toggle";
-	  "XF86AudioLowerVolume" = "exec swayosd --output-volume lower";
-	  "XF86AudioRaiseVolume" = "exec swayosd --output-volume raise";
-	  "XF86MonBrightnessDown" = "exec swayosd --brightness lower";
-	  "XF86MonBrightnessUp" = "exec swayosd --brightness raise";
+          "${modifier}+q" = "kill";
+          "--release Caps_Lock" = "exec swayosd --caps-lock";
+          "XF86AudioMute" = "exec swayosd --output-volume mute-toggle";
+          "XF86AudioLowerVolume" = "exec swayosd --output-volume lower";
+          "XF86AudioRaiseVolume" = "exec swayosd --output-volume raise";
+          "XF86MonBrightnessDown" = "exec swayosd --brightness lower";
+          "XF86MonBrightnessUp" = "exec swayosd --brightness raise";
         };
     };
   };
