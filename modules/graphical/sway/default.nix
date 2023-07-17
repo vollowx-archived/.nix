@@ -10,4 +10,7 @@
       wf-recorder
     ];
   };
+
+  programs.nm-applet.enable = true;
+  services.blueman.enable = true;
 }

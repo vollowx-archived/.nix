@@ -21,7 +21,7 @@
       ls = "exa --git --icons $@";
       cat = "bat $@";
       # dig = "dog $@";
-      # sudo = "doas $@";
+      sudo = "doas $@";
       # curl = "curlie $@";
     };
 

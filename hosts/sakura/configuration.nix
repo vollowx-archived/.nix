@@ -60,6 +60,8 @@
     enableSSHSupport = true;
   };
 
+  security.doas.enable = true;
+  security.sudo.enable = false;
   services.printing.enable = true;
   services.tlp.enable = true;
   services.openssh.enable = true;
