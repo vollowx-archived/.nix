@@ -4,13 +4,13 @@
   environment.systemPackages = with pkgs; [ zpty ];
   programs.zsh = {
     enable = true;
-    autosuggestion = {
+    autosuggestions = {
       enable = true;
-      strategy = [ "history", "completion" ];
+      strategy = [ "history" "completion" ];
     };
     syntaxhighlighting = {
       enable = true;
-      highlighters = [ "main", "brackets", "pattern", "cursor", "regexp", "root", "line" ];
+      highlighters = [ "main" "brackets" "pattern" "cursor" "regexp" "root" "line" ];
     };
   };
 }
