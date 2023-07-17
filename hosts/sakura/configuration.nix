@@ -7,7 +7,6 @@
   imports =
     [
       ./hardware-configuration.nix
-      ../../modules/system
 
       ../../users/vollow
     ];
@@ -61,11 +60,6 @@
     enableSSHSupport = true;
   };
 
-  programs.zsh = {
-    enable = true;
-    enableCompletion = true;
-  };
-
   services.printing.enable = true;
   services.tlp.enable = true;
   services.openssh.enable = true;
@@ -78,4 +72,3 @@
   # https://nixos.org/nixos/options.html
   system.stateVersion = "23.11";
 }
-

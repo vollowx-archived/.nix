@@ -41,15 +41,6 @@
 
     plugins = [
       {
-        name = "zsh-defer";
-        src = pkgs.fetchFromGitHub {
-          owner = "romkatv";
-          repo = "zsh-defer";
-          rev = "master";
-          sha256 = "/rcIS2AbTyGw2HjsLPkHtt50c2CrtAFDnLuV5wsHcLc=";
-        };
-      }
-      {
         name = "zsh-nix-shell";
         file = "share/zsh-nix-shell/nix-shell.plugin.zsh";
         src = pkgs.zsh-nix-shell;
