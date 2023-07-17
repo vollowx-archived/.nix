@@ -1,7 +1,6 @@
-{ config, pkgs, ... }:
+{ config, ... }:
 
 {
-  environment.systemPackages = with pkgs; [ zpty ];
   programs.zsh = {
     enable = true;
     autosuggestions = {
