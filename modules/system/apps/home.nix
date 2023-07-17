@@ -1,6 +1,6 @@
 {
   imports =
     [
-      ./home-shell.nix
+      ./_home-shell.nix
     ];
 }

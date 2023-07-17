@@ -8,10 +8,8 @@
     [
       ./hardware-configuration.nix
       ../../modules/system
-      ../../modules/network
-      ../../modules/graphical/sway
 
-      ./users/vollow.nix
+      ../../users/vollow
     ];
 
   boot.loader = {
@@ -25,6 +23,7 @@
   };
 
   networking.hostName = "sakura";
+  networking.networkmanager.enable = true;
   time.timeZone = "Asia/Shanghai";
   i18n.defaultLocale = "en_US.UTF-8";
 
@@ -36,8 +35,6 @@
       intel-compute-runtime
     ];
   };
-
-  services.printing.enable = true;
 
   sound.enable = true;
   hardware.bluetooth.enable = true;
@@ -69,8 +66,10 @@
     enableCompletion = true;
   };
 
+  services.printing.enable = true;
   services.tlp.enable = true;
   services.openssh.enable = true;
+  services.gnome.gnome-keyring.enable = true;
 
   nix.package = pkgs.nixUnstable;
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
