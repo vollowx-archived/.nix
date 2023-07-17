@@ -24,9 +24,7 @@
   };
 
   networking.hostName = "sakura";
-
   time.timeZone = "Asia/Shanghai";
-
   i18n.defaultLocale = "en_US.UTF-8";
 
   hardware.opengl = {
@@ -46,10 +44,13 @@
   environment.systemPackages = with pkgs; [
     coreutils
     usbutils
+    file
     curl
     git
     unzip
     wget
+    exa
+    duf
     neovim
     openjdk
   ];

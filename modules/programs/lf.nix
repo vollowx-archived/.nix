@@ -25,7 +25,7 @@ y=$5
 mime=$(file -Lb --mime-type "$file")
 
 if [[ "$mime" =~ ^image ]]; then
-  kitty +kitten icat --silent --stdin no --transfer-mode file --place "${w}x${h}@${x}x${y}" "$file" </dev/null >/dev/tty
+  kitty +kitten icat --silent --stdin no --transfer-mode file --place "''${w}x''${h}@''${x}x''${y}" "$file" </dev/null >/dev/tty
   exit 1
 fi
 
