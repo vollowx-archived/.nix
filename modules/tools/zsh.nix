@@ -54,7 +54,7 @@
     ];
 
     shellAliases = {
-      lg = "lazygit";
+      lg = "lazygit $@";
 
       ls = "exa --git --icons --group-directories-first $@";
       la = "ls --all $@";
@@ -66,6 +66,21 @@
       dig = "dog $@";
       sudo = "doas $@";
       # curl = "curlie $@";
+
+      gaa = "git add --all $@";
+      gc = "git commit $@";
+      gca = "git commit --all $@";
+      gcl = "git clone --recurse-submodules $@";
+      gco = "git checkout $@";
+      gcob = "git checkout -b $@";
+      gd = "git diff $@";
+      gds = "git diff --staged $@";
+      gf = "git fetch $@";
+      gi = "git init $@";
+      gs = "git status --short $@";
+      gsa = "git status $@";
+      gp = "git push $@";
+      gpl = "git pull $@";
     };
   };
   home.packages = with pkgs; [
@@ -79,13 +94,11 @@
 
   programs.starship = {
     enable = true;
-    enableBashIntegration = true;
     enableZshIntegration = true;
   };
 
   programs.zoxide = {
     enable = true;
-    enableBashIntegration = true;
     enableZshIntegration = true;
   };
 }

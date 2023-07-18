@@ -23,6 +23,7 @@
     shellIntegration.enableZshIntegration = true;
     theme = "Catppuccin-Mocha";
     settings = {
+      shell_integration = "no-cursor";
       enable_audio_bell = false;
 
       initial_window_width = 640;
