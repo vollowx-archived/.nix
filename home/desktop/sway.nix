@@ -41,9 +41,6 @@
     xwayland = true;
     config = {
       modifier = "Mod4";
-      terminal = "kitty -1";
-      menu = "wofi --show drun";
-
       input = {
         "type:keyboard" = {
           xkb_layout = "us";
@@ -106,6 +103,8 @@
         in {
           "${modifier}+Escape" = "exec wlogout";
           "${modifier}+q" = "kill";
+          "${modifier}+d" = "exec wofi --show drun";
+          "${modifier}+Enter" = "exec kitty -1";
           "--release Caps_Lock" = "exec swayosd --caps-lock";
           "XF86AudioMute" = "exec swayosd --output-volume mute-toggle";
           "XF86AudioLowerVolume" = "exec swayosd --output-volume lower";
