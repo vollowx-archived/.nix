@@ -3,16 +3,17 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     neovim-nightly.url = "github:nix-community/neovim-nightly-overlay";
   };
 
   outputs = { nixpkgs, home-manager, neovim-nightly, ... }@inputs:
     let
-      system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
-
       colors = {
         rosewater = "ff8389";
         flamingo = "ff8389";
