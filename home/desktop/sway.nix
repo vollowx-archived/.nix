@@ -70,19 +70,43 @@
         };
       };
 
-      colors = let
-        style = {
+      colors = {
+        background = "#${colors.base}";
+        focused = {
           background = "#${colors.base}";
-          indicator = "#${colors.text}";
-          border = "#${colors.crust}";
+          border = "#${colors.pink}";
+          childBorder = "#${colors.pink}";
+          indicator = "#${colors.rosewater}";
           text = "#${colors.text}";
-          childBorder = "#${colors.crust}";
         };
-      in {
-        focused = style;
-        focusedInactive = style;
-        unfocused = style;
-        urgent = style;
+        focusedInactive = {
+          background = "#${colors.base}";
+          border = "#${colors.surface2}";
+          childBorder = "#${colors.surface2}";
+          indicator = "#${colors.rosewater}";
+          text = "#${colors.text}";
+        };
+        placeholder = {
+          background = "#${colors.base}";
+          border = "#${colors.overlay0}";
+          childBorder = "#${colors.overlay0}";
+          indicator = "#${colors.overlay0}";
+          text = "#${colors.text}";
+        };
+        unfocused = {
+          background = "#${colors.base}";
+          border = "#${colors.surface1}";
+          childBorder = "#${colors.surface1}";
+          indicator = "#${colors.rosewater}";
+          text = "#${colors.text}";
+        };
+        urgent = {
+          background = "#${colors.base}";
+          border = "#${colors.peach}";
+          childBorder = "#${colors.peach}";
+          indicator = "#${colors.overlay0}";
+          text = "#${colors.text}";
+	};
       };
       gaps.inner = 4;
       window = {
@@ -100,11 +124,37 @@
       keybindings =
         let
           modifier = config.wayland.windowManager.sway.config.modifier;
-        in {
+          concatAttrs = lib.fold (x: y: x // y) { };
+          workspaceKeys = concatAttrs (map (i: {
+            "${modifier}+${toString i}" = "exec 'swaymsg workspace ${toString i}'";
+            "${modifier}+Shift+${toString i}" =
+            "exec 'swaymsg move container to workspace ${toString i}'";
+          }) (lib.range 0 9));
+        in workspaceKeys // {
           "${modifier}+Escape" = "exec wlogout";
-          "${modifier}+q" = "kill";
           "${modifier}+d" = "exec wofi --show drun";
-          "${modifier}+Enter" = "exec kitty -1";
+          "${modifier}+Return" = "exec kitty -1";
+
+	  "${modifier}+q" = "kill";
+          "${modifier}+r" = ''mode "resize"'';
+          "${modifier}+h" = "focus left";
+          "${modifier}+j" = "focus down";
+          "${modifier}+k" = "focus up";
+          "${modifier}+l" = "focus right";
+          "${modifier}+Shift+h" = "move left";
+          "${modifier}+Shift+j" = "move down";
+          "${modifier}+Shift+k" = "move up";
+          "${modifier}+Shift+l" = "move right";
+          "${modifier}+w" = "layout tabbed";
+          "${modifier}+e" = "layout toggle split";
+          "${modifier}+f" = "fullscreen";
+          "${modifier}+Space" = "floating toggle";
+          "${modifier}+Shift+s" = "sticky toggle";
+          "${modifier}+Shift+Space" = "focus mode_toggle";
+          "${modifier}+a" = "focus parent";
+          "${modifier}+Shift+c" = "reload";
+          "${modifier}+Shift+q" = "exit";
+
           "--release Caps_Lock" = "exec swayosd --caps-lock";
           "XF86AudioMute" = "exec swayosd --output-volume mute-toggle";
           "XF86AudioLowerVolume" = "exec swayosd --output-volume lower";
