@@ -33,6 +33,7 @@
 
   wayland.windowManager.sway = {
     enable = true;
+    # package = pkgs.swayfx;
     systemd.enable = true;
     extraSessionCommands = ''
       export XDG_CURRENT_DESKTOP=sway;
@@ -70,52 +71,65 @@
         };
       };
 
-      colors = {
-        background = "#${colors.base}";
-        focused = {
+      # colors = {
+      #   background = "#${colors.base}";
+      #   focused = {
+      #     background = "#${colors.base}";
+      #     border = "#${colors.pink}";
+      #     childBorder = "#${colors.pink}";
+      #     indicator = "#${colors.rosewater}";
+      #     text = "#${colors.text}";
+      #   };
+      #   focusedInactive = {
+      #     background = "#${colors.base}";
+      #     border = "#${colors.surface2}";
+      #     childBorder = "#${colors.surface2}";
+      #     indicator = "#${colors.rosewater}";
+      #     text = "#${colors.text}";
+      #   };
+      #   placeholder = {
+      #     background = "#${colors.base}";
+      #     border = "#${colors.overlay0}";
+      #     childBorder = "#${colors.overlay0}";
+      #     indicator = "#${colors.overlay0}";
+      #     text = "#${colors.text}";
+      #   };
+      #   unfocused = {
+      #     background = "#${colors.base}";
+      #     border = "#${colors.surface1}";
+      #     childBorder = "#${colors.surface1}";
+      #     indicator = "#${colors.rosewater}";
+      #     text = "#${colors.text}";
+      #   };
+      #   urgent = {
+      #     background = "#${colors.base}";
+      #     border = "#${colors.peach}";
+      #     childBorder = "#${colors.peach}";
+      #     indicator = "#${colors.overlay0}";
+      #     text = "#${colors.text}";
+      #   };
+      # };
+      colors = let
+        style = {
           background = "#${colors.base}";
-          border = "#${colors.pink}";
-          childBorder = "#${colors.pink}";
-          indicator = "#${colors.rosewater}";
+          indicator = "#${colors.text}";
+          border = "#${colors.crust}";
           text = "#${colors.text}";
+          childBorder = "#${colors.crust}";
         };
-        focusedInactive = {
-          background = "#${colors.base}";
-          border = "#${colors.surface2}";
-          childBorder = "#${colors.surface2}";
-          indicator = "#${colors.rosewater}";
-          text = "#${colors.text}";
-        };
-        placeholder = {
-          background = "#${colors.base}";
-          border = "#${colors.overlay0}";
-          childBorder = "#${colors.overlay0}";
-          indicator = "#${colors.overlay0}";
-          text = "#${colors.text}";
-        };
-        unfocused = {
-          background = "#${colors.base}";
-          border = "#${colors.surface1}";
-          childBorder = "#${colors.surface1}";
-          indicator = "#${colors.rosewater}";
-          text = "#${colors.text}";
-        };
-        urgent = {
-          background = "#${colors.base}";
-          border = "#${colors.peach}";
-          childBorder = "#${colors.peach}";
-          indicator = "#${colors.overlay0}";
-          text = "#${colors.text}";
-	};
+      in {
+        focused = style;
+        focusedInactive = style;
+        unfocused = style;
+        urgent = style;
       };
-      gaps.inner = 4;
       window = {
         titlebar = false;
-        border = 3;
+        border = 0;
       };
       floating = {
         titlebar = false;
-        border = 3;
+        border = 0;
       };
       bars = lib.mkForce [ ];
 
@@ -131,6 +145,9 @@
             "exec 'swaymsg move container to workspace ${toString i}'";
           }) (lib.range 0 9));
         in workspaceKeys // {
+	  "${modifier}+o" = "exec ${pkgs.hyprpicker}/bin/hyprpicker -a -n";
+	  "${modifier}+n" = "exec ${pkgs.n-status}/bin/n-status";
+
           "${modifier}+Escape" = "exec wlogout";
           "${modifier}+d" = "exec wofi --show drun";
           "${modifier}+Return" = "exec kitty -1";
@@ -154,14 +171,16 @@
           "${modifier}+Shift+r" = "reload";
           "${modifier}+Shift+q" = "exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'";
 
-          "--release Caps_Lock" = "exec swayosd --caps-lock";
-          "XF86AudioMute" = "exec swayosd --output-volume mute-toggle";
-          "XF86AudioLowerVolume" = "exec swayosd --output-volume lower";
-          "XF86AudioRaiseVolume" = "exec swayosd --output-volume raise";
-          "XF86MonBrightnessDown" = "exec swayosd --brightness lower";
-          "XF86MonBrightnessUp" = "exec swayosd --brightness raise";
+          "XF86AudioMute" = "exec ${pkgs.n-volume}/bin/volume sset Master toggle";
+          "XF86AudioLowerVolume" = "exec ${pkgs.n-volume}/bin/n-volume sset Master 5%-";
+          "XF86AudioRaiseVolume" = "exec ${pkgs.n-volume}/bin/n-volume sset Master 5%+";
+          "XF86MonBrightnessDown" = "exec ${pkgs.n-brightness}/bin/n-brightness set 5%-";
+          "XF86MonBrightnessUp" = "exec ${pkgs.n-brightness}/bin/n-brightness set 5%+";
         };
     };
+    extraConfig = ''
+corner_radius 8
+    '';
   };
 
   services.swayidle = {
@@ -174,11 +193,6 @@
       { timeout = 300; command = "swaylock -f"; }
       { timeout = 600; command = "swaymsg 'output * dpms off'"; }
     ];
-  };
-
-  services.swayosd = {
-    enable = true;
-    maxVolume = 120;
   };
 
   programs.swaylock = {

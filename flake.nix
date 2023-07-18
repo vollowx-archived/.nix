@@ -52,6 +52,7 @@
           {
             nixpkgs.overlays = [
               neovim-nightly.overlay
+	      (import ./overlays/scripts.nix)
             ];
           }
           home-manager.nixosModules.home-manager

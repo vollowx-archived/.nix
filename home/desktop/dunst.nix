@@ -1,10 +1,11 @@
 { pkgs, colors, ... }: {
+  home.packages = with pkgs; [ libnotify ];
   services.dunst = let
     style = {
       timeout = 8;
       background = "#${colors.mantle}";
       foreground = "#${colors.text}";
-      highlight = "#${colors.mauve}";
+      highlight = "#${colors.pink}";
     };
   in {
     enable = true;
@@ -18,7 +19,7 @@
         icon_position = "off";
         line_height = "8";
 
-        progress_bar_height = 7;
+        progress_bar_height = 6;
         progress_bar_frame_width = 0;
 
         padding = 18;
