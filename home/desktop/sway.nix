@@ -16,13 +16,6 @@
       QT_QPA_PLATFORMTHEME = "qt6ct";
       # Java
       _JAVA_AWT_WM_NONREPARENTING = "1";
-      # Fcitx5
-      GLFW_IM_MODULE = "fcitx";
-      GTK_IM_MODULE = "fcitx";
-      INPUT_METHOD = "fcitx";
-      XMODIFIERS = "@im=fcitx";
-      IMSETTINGS_MODULE = "fcitx";
-      QT_IM_MODULE = "fcitx";
     };
   };
 

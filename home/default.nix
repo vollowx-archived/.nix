@@ -10,6 +10,7 @@
 
     ./desktop/gtk.nix
     ./desktop/dunst.nix
+    ./desktop/fcitx.nix
     ./desktop/sway.nix
     ./desktop/kitty.nix
     ./desktop/firefox.nix
