@@ -1,22 +1,24 @@
-{ config, pkgs, lib, ... }:
+{ pkgs, inputs, colors, ... }:
 
-with config;
-with lib;
-with pkgs; {
-  users = {
-    defaultUserShell = bash;
-    mutableUsers = true;
-
-    users = {
-      root = {
-        home = "/root";
-        uid = ids.uids.root;
-        group = "root";
-        initialHashedPassword = mkDefault "!";
-      };
+{
+  nixpkgs.config.allowUnfree = true;
+  home-manager = {
+    useGlobalPkgs = true;
+    useUserPackages = true;
+    extraSpecialArgs = { inherit inputs colors; };
+    users.vollow.imports = [ ../../home ];
+  };
+  nix = {
+    gc.automatic = true;
+    settings = {
+      warn-dirty = false;
+      experimental-features = [ "nix-command" "flakes" ];
+      auto-optimise-store = true;
+      substituters = [ "https://nix-community.cachix.org" ];
+      trusted-public-keys = [
+        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+      ];
+      tarball-ttl = 604800;
     };
   };
-
-  programs.zsh.enable = true;
-  services.v2raya.enable = true;
 }

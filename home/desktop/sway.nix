@@ -1,25 +1,19 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, colors, ... }:
 
-let
-  rosewater = "#f5e0dc";
-  pink = "#f5c2e7";
-  mauve = "#cba6f7";
-  peach = "#fab387";
-  text = "#cdd6f4";
-  overlay0 = "#6c7086";
-  surface2 = "#585b70";
-  surface1 = "#45475a";
-  base = "#1e1e2e";
-in {
-  imports =
-    [
-      ../_home-wayland.nix
-      ./_home-waybar.nix
-    ];
+{
+  home.packages = with pkgs; [
+    wlogout
+    wofi
+    brightnessctl
+    wdisplays
+  ];
 
   wayland.windowManager.sway = {
     enable = true;
     systemd.enable = true;
+    extraSessionCommands = ''
+      export XDG_CURRENT_DESKTOP=sway;
+    '';
     wrapperFeatures.gtk = true;
     xwayland = true;
     config = rec {
@@ -56,43 +50,19 @@ in {
         };
       };
 
-      colors = {
-        background = base;
-        focused = {
-          background = base;
-          border = pink;
-          childBorder = pink;
-          indicator = rosewater;
-          text = text;
+      colors = let
+        style = {
+          background = "#${colors.base}";
+          indicator = "#${colors.text}";
+          border = "#${colors.crust}";
+          text = "#${colors.text}";
+          childBorder = "#${colors.crust}";
         };
-        focusedInactive = {
-          background = base;
-          border = surface2;
-          childBorder = surface2;
-          indicator = rosewater;
-          text = text;
-        };
-        placeholder = {
-          background = base;
-          border = overlay0;
-          childBorder = overlay0;
-          indicator = overlay0;
-          text = text;
-        };
-        unfocused = {
-          background = base;
-          border = surface1;
-          childBorder = surface1;
-          indicator = rosewater;
-          text = text;
-        };
-        urgent = {
-          background = base;
-          border = peach;
-          childBorder = peach;
-          indicator = overlay0;
-          text = text;
-        };
+      in {
+        focused = style;
+        focusedInactive = style;
+        unfocused = style;
+        urgent = style;
       };
       gaps.inner = 4;
       window = {
@@ -103,7 +73,7 @@ in {
         titlebar = false;
         border = 3;
       };
-      bars = [];
+      bars = lib.mkForce [ ];
 
       startup = [];
 
@@ -123,13 +93,28 @@ in {
     };
   };
 
-  home.sessionVariables.XDG_CURRENT_DESKTOP = "sway";
-
-  programs.zsh.initExtra = ''
-if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
-  exec sway
-fi
-  '';
+  home.sessionVariables = {
+    # Wayland
+    QT_QPA_PLATFORM = "wayland";
+    SDL_VIDEODRIVER = "wayland";
+    CLUTTER_BACKEND = "wayland";
+    # Firefox
+    MOZ_ENABLE_WAYLAND = "1";
+    MOZ_WEBRENDER = "1";
+    # QT
+    QT_AUTO_SCREEN_SCALE_FACTOR = "1";
+    QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
+    QT_QPA_PLATFORMTHEME = "qt6ct";
+    # Java
+    _JAVA_AWT_WM_NONREPARENTING = "1";
+    # Fcitx5
+    GLFW_IM_MODULE = "fcitx";
+    GTK_IM_MODULE = "fcitx";
+    INPUT_METHOD = "fcitx";
+    XMODIFIERS = "@im=fcitx";
+    IMSETTINGS_MODULE = "fcitx";
+    QT_IM_MODULE = "fcitx";
+  };
 
   services.swayidle = {
     enable = true;
@@ -146,22 +131,6 @@ fi
   services.swayosd = {
     enable = true;
     maxVolume = 120;
-  };
-
-  services.mako = {
-    enable = true;
-    defaultTimeout = 20000;
-    groupBy = "summary";
-    borderRadius = 8;
-    borderSize = 3;
-    backgroundColor = "#11111b";
-    textColor = "#cdd6f4";
-    borderColor = "#f5c2e7";
-    progressColor = "over #1e2e2e";
-    extraConfig = ''
-[urgency=high]
-border-color=#f2cdcd
-    '';
   };
 
   programs.swaylock = {

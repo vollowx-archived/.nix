@@ -12,25 +12,49 @@
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
+
+      colors = {
+        rosewater = "ff8389";
+        flamingo = "ff8389";
+        red = "ff8389";
+        maroon = "ff8389";
+        pink = "ff7eb6";
+        mauve = "be95ff";
+        peach = "d44a1c";
+        yellow = "ab8600";
+        green = "08bdba";
+        teal = "33b1ff";
+        sky = "33b1ff";
+        sapphire = "33b1ff";
+        blue = "78a9ff";
+        lavender = "78a9ff";
+        text = "ffffff";
+        subtext1 = "f4f4f4";
+        subtext0 = "e0e0e0";
+        overlay2 = "adadad";
+        overlay1 = "949494";
+        overlay0 = "7a7a7a";
+        surface2 = "4f4f4f";
+        surface1 = "383838";
+        surface0 = "2e2e2e";
+        base = "161616";
+        mantle = "0d0d0d";
+        crust = "000000";
+      };
     in {
-      nixosConfigurations = {
-        sakura = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs; };
-          system = "x86_64-linux";
-          modules = [
-            ./hosts/sakura
-            {
-              nixpkgs.overlays = [
-                neovim-nightly.overlay
-              ];
-            }
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-            }
-          ];
-        };
+      nixosConfigurations."sakura" = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = { inherit inputs colors; };
+        modules = [
+          ./hosts/sakura
+          ./hosts/common
+          {
+            nixpkgs.overlays = [
+              neovim-nightly.overlay
+            ];
+          }
+          home-manager.nixosModules.home-manager
+        ];
       };
     };
 }
