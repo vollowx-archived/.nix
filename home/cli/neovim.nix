@@ -8,11 +8,15 @@
     viAlias = true;
     vimdiffAlias = true;
     extraPackages = with pkgs; [
-      stylua
       lua-language-server
+      marksman
 
+      stylua
+      shfmt
       nixfmt
+
       tree-sitter
+      clang
     ];
   };
 

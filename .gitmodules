@@ -1,0 +1,3 @@
+[submodule "conf/nvim"]
+	path = conf/nvim
+	url = git@github.com:vollowx/.nvim.git

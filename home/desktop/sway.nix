@@ -143,9 +143,9 @@
             "exec 'swaymsg move container to workspace ${toString i}'";
           }) (lib.range 0 9));
         in workspaceKeys // {
-	  "${modifier}+o" = "exec ${pkgs.hyprpicker}/bin/hyprpicker -a -n";
-	  "${modifier}+q" = "exec ${pkgs.n-status}/bin/n-status";
-	  "${modifier}+v" = "exec clipman pick -t wofi";
+          "${modifier}+o" = "exec ${pkgs.hyprpicker}/bin/hyprpicker -a -n";
+          "${modifier}+q" = "exec ${pkgs.n-status}/bin/n-status";
+          "${modifier}+v" = "exec clipman pick -t wofi";
 
           "${modifier}+Escape" = "exec wlogout";
           "${modifier}+d" = "exec wofi --show drun";
@@ -170,7 +170,7 @@
           "${modifier}+Shift+r" = "reload";
           "${modifier}+Shift+e" = "exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'";
 
-          "XF86AudioMute" = "exec ${pkgs.n-volume}/bin/volume sset Master toggle";
+          "XF86AudioMute" = "exec ${pkgs.n-volume}/bin/n-volume sset Master toggle";
           "XF86AudioLowerVolume" = "exec ${pkgs.n-volume}/bin/n-volume sset Master 5%-";
           "XF86AudioRaiseVolume" = "exec ${pkgs.n-volume}/bin/n-volume sset Master 5%+";
           "XF86MonBrightnessDown" = "exec ${pkgs.n-brightness}/bin/n-brightness set 5%-";

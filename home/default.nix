@@ -22,6 +22,7 @@
     wget
     exa
     duf
+    fd
     ripgrep
 
     nodejs
