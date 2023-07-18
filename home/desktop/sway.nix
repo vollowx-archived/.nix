@@ -135,8 +135,8 @@
           "${modifier}+d" = "exec wofi --show drun";
           "${modifier}+Return" = "exec kitty -1";
 
-	  "${modifier}+q" = "kill";
-          "${modifier}+r" = ''mode "resize"'';
+          "${modifier}+q" = "kill";
+          "${modifier}+r" = "mode 'resize'";
           "${modifier}+h" = "focus left";
           "${modifier}+j" = "focus down";
           "${modifier}+k" = "focus up";
@@ -148,12 +148,11 @@
           "${modifier}+w" = "layout tabbed";
           "${modifier}+e" = "layout toggle split";
           "${modifier}+f" = "fullscreen";
-          "${modifier}+Space" = "floating toggle";
-          "${modifier}+Shift+s" = "sticky toggle";
-          "${modifier}+Shift+Space" = "focus mode_toggle";
+          "${modifier}+Space" = "focus mode_toggle";
+          "${modifier}+Shift+Space" = "floating toggle";
           "${modifier}+a" = "focus parent";
-          "${modifier}+Shift+c" = "reload";
-          "${modifier}+Shift+q" = "exit";
+          "${modifier}+Shift+r" = "reload";
+          "${modifier}+Shift+q" = "exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'";
 
           "--release Caps_Lock" = "exec swayosd --caps-lock";
           "XF86AudioMute" = "exec swayosd --output-volume mute-toggle";
