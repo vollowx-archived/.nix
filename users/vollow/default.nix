@@ -36,7 +36,7 @@
         ./env.nix
 
         ../../modules/system/apps/home.nix
-        ../../modules/cli/apps/home.nix
+        ../../modules/tools
         ../../modules/graphical/apps/home.nix
 
         # Choose a WM
@@ -48,7 +48,6 @@
     [
       # Basic
       ../../modules/system
-      ../../modules/cli
       ../../modules/graphical
 
       # Choose a WM

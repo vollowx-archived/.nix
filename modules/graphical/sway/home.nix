@@ -7,6 +7,7 @@ let
   peach = "#fab387";
   text = "#cdd6f4";
   overlay0 = "#6c7086";
+  surface2 = "#585b70";
   surface1 = "#45475a";
   base = "#1e1e2e";
 in {
@@ -23,7 +24,7 @@ in {
     xwayland = true;
     config = rec {
       modifier = "Mod4";
-      terminal = "kitty";
+      terminal = "kitty -1";
       menu = "wofi --show drun";
 
       input = {
@@ -66,8 +67,8 @@ in {
         };
         focusedInactive = {
           background = base;
-          border = mauve;
-          childBorder = mauve;
+          border = surface2;
+          childBorder = surface2;
           indicator = rosewater;
           text = text;
         };
@@ -124,14 +125,34 @@ in {
 
   home.sessionVariables.XDG_CURRENT_DESKTOP = "sway";
 
-  services.swayosd = {
-    enable = true;
-    maxVolume = 120;
-  };
-
   programs.zsh.initExtra = ''
 if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
   exec sway
 fi
   '';
+
+  services.swayidle = {
+    enable = true;
+    events = [
+      { event = "before-sleep"; command = "swaylock -f"; }
+      { event = "after-resume"; command = "swaymsg 'output * dpms on'"; }
+    ];
+    timeouts = [
+      { timeout = 300; command = "swaylock -f"; }
+      { timeout = 600; command = "swaymsg 'output * dpms off'"; }
+    ];
+  };
+
+  services.swayosd = {
+    enable = true;
+    maxVolume = 120;
+  };
+
+  programs.swaylock = {
+    enable = true;
+    settings = {
+      ignore-empty-password = true;
+      color = "#000000";
+    };
+  };
 }

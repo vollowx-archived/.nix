@@ -6,8 +6,9 @@
 {
   imports =
     [
-      ./hardware-configuration.nix
+      ./hardware.nix
 
+      ../common
       ../../users/vollow
     ];
 
@@ -50,6 +51,7 @@
     duf
     neovim
     openjdk
+    neofetch
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -67,8 +69,20 @@
   services.openssh.enable = true;
   services.gnome.gnome-keyring.enable = true;
 
-  nix.package = pkgs.nixUnstable;
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix = {
+    package = pkgs.nixUnstable;
+
+    gc.automatic = true;
+    gc.dates = "12:45";
+
+    optimise.automatic = true;
+    optimise.dates = ["12:55"];
+
+    settings = {
+      auto-optimise-store = true;
+      experimental-features = [ "nix-command" "flakes" ];
+    };
+  };
 
   # man configuration.nix
   # https://nixos.org/nixos/options.html
