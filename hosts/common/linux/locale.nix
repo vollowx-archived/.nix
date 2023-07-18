@@ -15,7 +15,7 @@
       noto-fonts-cjk
       noto-fonts-extra
       noto-fonts-emoji
-      (nerdfonts.override { fonts = [ "JetBrainsMono" "CartographCF" ]; })
+      (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
     ];
     fontconfig = {
       defaultFonts = {

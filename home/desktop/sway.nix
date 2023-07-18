@@ -39,7 +39,7 @@
     '';
     wrapperFeatures.gtk = true;
     xwayland = true;
-    config = rec {
+    config = {
       modifier = "Mod4";
       terminal = "kitty -1";
       menu = "wofi --show drun";
@@ -61,11 +61,9 @@
       };
       output = {
         eDP-1 = {
-	  scale = 1;
           bg = "~/.local/share/backgrounds/Nix.png fill";
         };
         HDMI-A-1 = {
-	  scale = 1;
           bg = "~/.local/share/backgrounds/Nix.png fill";
         };
       };
@@ -104,8 +102,8 @@
 
       keybindings =
         let
-          modufier = config.wayland.windowManager.sway.config.modifier;
-        in lib.mkOptionDefault {
+          modifier = config.wayland.windowManager.sway.config.modifier;
+        in {
           "${modifier}+Escape" = "exec wlogout";
           "${modifier}+q" = "kill";
           "--release Caps_Lock" = "exec swayosd --caps-lock";

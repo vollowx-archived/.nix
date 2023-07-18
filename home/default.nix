@@ -23,7 +23,7 @@
 
     nodejs
     nodePackages.pnpm
-    openjre
+    openjdk
 
     neofetch
     system-config-printer
