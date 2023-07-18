@@ -1,11 +1,10 @@
 { pkgs, config, inputs, ... }:
 
 {
-  home.packages = with pkgs; [glib];
+  home.packages = with pkgs; [ glib ];
 
-  xdg.systemDirs.data = let
-    schema = pkgs.gsettings-desktop-schemas;
-  in ["${schema}/share/gsettings-schemas/${schema.name}"];
+  xdg.systemDirs.data = let schema = pkgs.gsettings-desktop-schemas;
+  in [ "${schema}/share/gsettings-schemas/${schema.name}" ];
 
   gtk = {
     enable = true;
@@ -13,8 +12,8 @@
       name = "Catppuccin-Mocha-Compact-Pink-dark";
       package = pkgs.catppuccin-gtk.override {
         accents = [ "pink" ];
-	size = "compact";
-	tweaks = [ "rimless" "black"];
+        size = "compact";
+        tweaks = [ "rimless" "black" ];
         variant = "mocha";
       };
     };
@@ -31,5 +30,6 @@
     };
   };
 
-  home.file.".icons/default".source = "${pkgs.catppuccin-cursors.mochaDark}/share/icons/Catppuccin-Mocha-Dark-Cursors";
+  home.file.".icons/default".source =
+    "${pkgs.catppuccin-cursors.mochaDark}/share/icons/Catppuccin-Mocha-Dark-Cursors";
 }

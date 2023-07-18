@@ -2,12 +2,7 @@
 
 {
   home = {
-    packages = with pkgs; [
-      wlogout
-      wofi
-      brightnessctl
-      wdisplays
-    ];
+    packages = with pkgs; [ wlogout wofi brightnessctl wdisplays ];
     sessionVariables = {
       # Wayland
       NIXOS_OZONE_WL = "1";
@@ -45,8 +40,8 @@
       input = {
         "type:keyboard" = {
           xkb_layout = "us";
-          repeat_delay = "200";  
-          repeat_rate = "30";  
+          repeat_delay = "200";
+          repeat_rate = "30";
         };
         "type:touchpad" = {
           dwt = "disabled";
@@ -58,18 +53,10 @@
         };
       };
       output = {
-        eDP-1 = {
-          bg = "~/.local/share/backgrounds/Nix.png fill";
-        };
-        HDMI-A-1 = {
-          bg = "~/.local/share/backgrounds/Nix.png fill";
-        };
+        eDP-1 = { bg = "~/.local/share/backgrounds/Nix.png fill"; };
+        HDMI-A-1 = { bg = "~/.local/share/backgrounds/Nix.png fill"; };
       };
-      seat = {
-        "*" = {
-          hide_cursor = "when-typing enable";
-        };
-      };
+      seat = { "*" = { hide_cursor = "when-typing enable"; }; };
 
       # colors = {
       #   background = "#${colors.base}";
@@ -131,51 +118,57 @@
         titlebar = false;
         border = 0;
       };
-      bars = [];
+      bars = [ ];
 
-      keybindings =
-        let
-          modifier = config.wayland.windowManager.sway.config.modifier;
-          concatAttrs = lib.fold (x: y: x // y) { };
-          workspaceKeys = concatAttrs (map (i: {
-            "${modifier}+${toString i}" = "exec 'swaymsg workspace ${toString i}'";
-            "${modifier}+Shift+${toString i}" =
+      keybindings = let
+        modifier = config.wayland.windowManager.sway.config.modifier;
+        concatAttrs = lib.fold (x: y: x // y) { };
+        workspaceKeys = concatAttrs (map (i: {
+          "${modifier}+${toString i}" =
+            "exec 'swaymsg workspace ${toString i}'";
+          "${modifier}+Shift+${toString i}" =
             "exec 'swaymsg move container to workspace ${toString i}'";
-          }) (lib.range 0 9));
-        in workspaceKeys // {
-          "${modifier}+o" = "exec ${pkgs.hyprpicker}/bin/hyprpicker -a -n";
-          "${modifier}+q" = "exec ${pkgs.n-status}/bin/n-status";
-          "${modifier}+v" = "exec clipman pick -t wofi";
+        }) (lib.range 0 9));
+      in workspaceKeys // {
+        "${modifier}+o" = "exec ${pkgs.hyprpicker}/bin/hyprpicker -a -n";
+        "${modifier}+q" = "exec ${pkgs.n-status}/bin/n-status";
+        "${modifier}+v" = "exec clipman pick -t wofi";
 
-          "${modifier}+Escape" = "exec wlogout";
-          "${modifier}+d" = "exec wofi --show drun";
-          "${modifier}+Return" = "exec kitty -1";
+        "${modifier}+Escape" = "exec wlogout";
+        "${modifier}+d" = "exec wofi --show drun";
+        "${modifier}+Return" = "exec kitty -1";
 
-          "${modifier}+Shift+q" = "kill";
-          "${modifier}+r" = "mode 'resize'";
-          "${modifier}+h" = "focus left";
-          "${modifier}+j" = "focus down";
-          "${modifier}+k" = "focus up";
-          "${modifier}+l" = "focus right";
-          "${modifier}+Shift+h" = "move left";
-          "${modifier}+Shift+j" = "move down";
-          "${modifier}+Shift+k" = "move up";
-          "${modifier}+Shift+l" = "move right";
-          "${modifier}+w" = "layout tabbed";
-          "${modifier}+e" = "layout toggle split";
-          "${modifier}+f" = "fullscreen";
-          "${modifier}+Space" = "focus mode_toggle";
-          "${modifier}+Shift+Space" = "floating toggle";
-          "${modifier}+a" = "focus parent";
-          "${modifier}+Shift+r" = "reload";
-          "${modifier}+Shift+e" = "exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'";
+        "${modifier}+Shift+q" = "kill";
+        "${modifier}+r" = "mode 'resize'";
+        "${modifier}+h" = "focus left";
+        "${modifier}+j" = "focus down";
+        "${modifier}+k" = "focus up";
+        "${modifier}+l" = "focus right";
+        "${modifier}+Shift+h" = "move left";
+        "${modifier}+Shift+j" = "move down";
+        "${modifier}+Shift+k" = "move up";
+        "${modifier}+Shift+l" = "move right";
+        "${modifier}+w" = "layout tabbed";
+        "${modifier}+e" = "layout toggle split";
+        "${modifier}+f" = "fullscreen";
+        "${modifier}+Space" = "focus mode_toggle";
+        "${modifier}+Shift+Space" = "floating toggle";
+        "${modifier}+a" = "focus parent";
+        "${modifier}+Shift+r" = "reload";
+        "${modifier}+Shift+e" =
+          "exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'";
 
-          "XF86AudioMute" = "exec ${pkgs.n-volume}/bin/n-volume sset Master toggle";
-          "XF86AudioLowerVolume" = "exec ${pkgs.n-volume}/bin/n-volume sset Master 5%-";
-          "XF86AudioRaiseVolume" = "exec ${pkgs.n-volume}/bin/n-volume sset Master 5%+";
-          "XF86MonBrightnessDown" = "exec ${pkgs.n-brightness}/bin/n-brightness set 5%-";
-          "XF86MonBrightnessUp" = "exec ${pkgs.n-brightness}/bin/n-brightness set 5%+";
-        };
+        "XF86AudioMute" =
+          "exec ${pkgs.n-volume}/bin/n-volume sset Master toggle";
+        "XF86AudioLowerVolume" =
+          "exec ${pkgs.n-volume}/bin/n-volume sset Master 5%-";
+        "XF86AudioRaiseVolume" =
+          "exec ${pkgs.n-volume}/bin/n-volume sset Master 5%+";
+        "XF86MonBrightnessDown" =
+          "exec ${pkgs.n-brightness}/bin/n-brightness set 5%-";
+        "XF86MonBrightnessUp" =
+          "exec ${pkgs.n-brightness}/bin/n-brightness set 5%+";
+      };
     };
   };
 
@@ -183,12 +176,24 @@
     enable = true;
     systemdTarget = "sway-session.target";
     events = [
-      { event = "before-sleep"; command = "swaylock -f"; }
-      { event = "after-resume"; command = "swaymsg 'output * dpms on'"; }
+      {
+        event = "before-sleep";
+        command = "swaylock -f";
+      }
+      {
+        event = "after-resume";
+        command = "swaymsg 'output * dpms on'";
+      }
     ];
     timeouts = [
-      { timeout = 300; command = "swaylock -f"; }
-      { timeout = 600; command = "swaymsg 'output * dpms off'"; }
+      {
+        timeout = 300;
+        command = "swaylock -f";
+      }
+      {
+        timeout = 600;
+        command = "swaymsg 'output * dpms off'";
+      }
     ];
   };
 

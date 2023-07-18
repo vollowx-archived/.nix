@@ -1,18 +1,12 @@
 { config, pkgs, colors, ... }:
 
 {
-  imports = [
-    ../common/linux
-    ./hardware.nix
-  ];
+  imports = [ ../common/linux ./hardware.nix ];
 
   hardware.opengl = {
     enable = true;
     driSupport = true;
-    extraPackages = with pkgs; [
-      intel-media-driver
-      intel-compute-runtime
-    ];
+    extraPackages = with pkgs; [ intel-media-driver intel-compute-runtime ];
   };
   hardware.bluetooth.enable = true;
   services.printing.enable = true;

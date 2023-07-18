@@ -1,6 +1,6 @@
 {
   programs.kitty = {
-    enable  = true;
+    enable = true;
     shellIntegration.enableZshIntegration = true;
     theme = "Catppuccin-Mocha";
     settings = {
@@ -12,7 +12,7 @@
       remember_window_size = false;
 
       scrollback_lines = 10000;
-      
+
       cursor_shape = "underline";
     };
   };
