@@ -54,8 +54,7 @@
     ];
 
     shellAliases = {
-      lg = "lazygit $@";
-
+      # Modern Unix units
       ls = "exa --git --icons --group-directories-first $@";
       la = "ls --all $@";
       l = "la --long $@";
@@ -67,6 +66,9 @@
       sudo = "doas $@";
       # curl = "curlie $@";
 
+      # Abbrs
+      nv = "nvim $@";
+      lg = "lazygit $@";
       gaa = "git add --all $@";
       gc = "git commit $@";
       gca = "git commit --all $@";

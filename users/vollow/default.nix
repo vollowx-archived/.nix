@@ -35,22 +35,17 @@
         # Basic
         ./env.nix
 
-        ../../modules/system/apps/home.nix
         ../../modules/tools
-        ../../modules/graphical/apps/home.nix
+        ../../modules/gui
 
         # Choose a WM
-        ../../modules/graphical/sway/home.nix
+        ../../modules/desktop/sway/home.nix
       ];
   };
 
   imports =
     [
-      # Basic
-      ../../modules/system
-      ../../modules/graphical
-
       # Choose a WM
-      ../../modules/graphical/sway
+      ../../modules/desktop/sway
     ];
 }

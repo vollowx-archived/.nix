@@ -148,6 +148,22 @@ fi
     maxVolume = 120;
   };
 
+  services.mako = {
+    enable = true;
+    defaultTimeout = 20000;
+    groupBy = "summary";
+    borderRadius = 8;
+    borderSize = 3;
+    backgroundColor = "#11111b";
+    textColor = "#cdd6f4";
+    borderColor = "#f5c2e7";
+    progressColor = "over #1e2e2e";
+    extraConfig = ''
+[urgency=high]
+border-color=#f2cdcd
+    '';
+  };
+
   programs.swaylock = {
     enable = true;
     settings = {
