@@ -1,9 +1,12 @@
-{ pkgs, lib, config, colors, ... }: {
+{ pkgs, lib, config, ... }:
+
+{
   imports = [
-    ./cli
-    # ./cli/git.nix
-    # ./cli/zsh.nix
-    # ./cli/neovim.nix
+    ./cli/bat.nix
+    ./cli/git.nix
+    ./cli/neovim.nix
+    ./cli/lazygit.nix
+    ./cli/zsh.nix
 
     ./desktop/gtk.nix
     ./desktop/dunst.nix
@@ -25,15 +28,18 @@
     nodePackages.pnpm
     openjdk
 
+    lf
     neofetch
     system-config-printer
   ];
 
-  xdg = {
+  xdg.userDirs = {
     enable = true;
-    userDirs = {
-      enable = true;
-      createDirectories = true;
-    };
+    createDirectories = true;
+  };
+
+  xdg.configFile."lf" = {
+    source = config.lib.file.mkOutOfStoreSymlink "/home/vollow/.nix/conf/lf";
+    recursive = true;
   };
 }
