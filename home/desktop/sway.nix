@@ -131,9 +131,7 @@
         titlebar = false;
         border = 0;
       };
-      bars = lib.mkForce [ ];
-
-      startup = [];
+      bars = [];
 
       keybindings =
         let
@@ -146,13 +144,14 @@
           }) (lib.range 0 9));
         in workspaceKeys // {
 	  "${modifier}+o" = "exec ${pkgs.hyprpicker}/bin/hyprpicker -a -n";
-	  "${modifier}+n" = "exec ${pkgs.n-status}/bin/n-status";
+	  "${modifier}+q" = "exec ${pkgs.n-status}/bin/n-status";
+	  "${modifier}+v" = "exec clipman pick -t wofi";
 
           "${modifier}+Escape" = "exec wlogout";
           "${modifier}+d" = "exec wofi --show drun";
           "${modifier}+Return" = "exec kitty -1";
 
-          "${modifier}+q" = "kill";
+          "${modifier}+Shift+q" = "kill";
           "${modifier}+r" = "mode 'resize'";
           "${modifier}+h" = "focus left";
           "${modifier}+j" = "focus down";
@@ -169,7 +168,7 @@
           "${modifier}+Shift+Space" = "floating toggle";
           "${modifier}+a" = "focus parent";
           "${modifier}+Shift+r" = "reload";
-          "${modifier}+Shift+q" = "exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'";
+          "${modifier}+Shift+e" = "exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'";
 
           "XF86AudioMute" = "exec ${pkgs.n-volume}/bin/volume sset Master toggle";
           "XF86AudioLowerVolume" = "exec ${pkgs.n-volume}/bin/n-volume sset Master 5%-";
@@ -178,13 +177,11 @@
           "XF86MonBrightnessUp" = "exec ${pkgs.n-brightness}/bin/n-brightness set 5%+";
         };
     };
-    extraConfig = ''
-corner_radius 8
-    '';
   };
 
   services.swayidle = {
     enable = true;
+    systemdTarget = "sway-session.target";
     events = [
       { event = "before-sleep"; command = "swaylock -f"; }
       { event = "after-resume"; command = "swaymsg 'output * dpms on'"; }
@@ -201,5 +198,10 @@ corner_radius 8
       ignore-empty-password = true;
       color = "#000000";
     };
+  };
+
+  services.clipman = {
+    enable = true;
+    systemdTarget = "sway-session.target";
   };
 }
