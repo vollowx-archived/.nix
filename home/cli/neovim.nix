@@ -8,6 +8,7 @@
     viAlias = true;
     vimdiffAlias = true;
     extraPackages = with pkgs; [
+      clang
       lua-language-server
       marksman
 
@@ -16,7 +17,6 @@
       nixfmt
 
       tree-sitter
-      clang
     ];
   };
 

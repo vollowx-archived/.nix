@@ -24,6 +24,7 @@
     duf
     fd
     ripgrep
+    fzy
 
     nodejs
     nodePackages.pnpm
