@@ -1,12 +1,35 @@
 { config, pkgs, lib, colors, ... }:
 
 {
-  home.packages = with pkgs; [
-    wlogout
-    wofi
-    brightnessctl
-    wdisplays
-  ];
+  home = {
+    packages = with pkgs; [
+      wlogout
+      wofi
+      brightnessctl
+      wdisplays
+    ];
+    sessionVariables = {
+      # Wayland
+      NIXOS_OZONE_WL = "1";
+      QT_QPA_PLATFORM = "wayland";
+      SDL_VIDEODRIVER = "wayland";
+      CLUTTER_BACKEND = "wayland";
+      # Firefox
+      MOZ_ENABLE_WAYLAND = "1";
+      # QT
+      QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
+      QT_QPA_PLATFORMTHEME = "qt6ct";
+      # Java
+      _JAVA_AWT_WM_NONREPARENTING = "1";
+      # Fcitx5
+      GLFW_IM_MODULE = "fcitx";
+      GTK_IM_MODULE = "fcitx";
+      INPUT_METHOD = "fcitx";
+      XMODIFIERS = "@im=fcitx";
+      IMSETTINGS_MODULE = "fcitx";
+      QT_IM_MODULE = "fcitx";
+    };
+  };
 
   wayland.windowManager.sway = {
     enable = true;
@@ -24,23 +47,25 @@
       input = {
         "type:keyboard" = {
           xkb_layout = "us";
-          repeat_delay = "300";  
+          repeat_delay = "200";  
           repeat_rate = "30";  
         };
         "type:touchpad" = {
           dwt = "disabled";
-          accel_profile = "adaptive";
-          pointer_accel = "0";
           tap = "enabled";
+          accel_profile = "adaptive";
           natural_scroll = "enabled";
-          middle_emulation = "enabled";
+          scroll_factor = "0.45";
+          pointer_accel = "0.27";
         };
       };
       output = {
         eDP-1 = {
+	  scale = 1;
           bg = "~/.local/share/backgrounds/Nix.png fill";
         };
         HDMI-A-1 = {
+	  scale = 1;
           bg = "~/.local/share/backgrounds/Nix.png fill";
         };
       };
@@ -91,29 +116,6 @@
           "XF86MonBrightnessUp" = "exec swayosd --brightness raise";
         };
     };
-  };
-
-  home.sessionVariables = {
-    # Wayland
-    QT_QPA_PLATFORM = "wayland";
-    SDL_VIDEODRIVER = "wayland";
-    CLUTTER_BACKEND = "wayland";
-    # Firefox
-    MOZ_ENABLE_WAYLAND = "1";
-    MOZ_WEBRENDER = "1";
-    # QT
-    QT_AUTO_SCREEN_SCALE_FACTOR = "1";
-    QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
-    QT_QPA_PLATFORMTHEME = "qt6ct";
-    # Java
-    _JAVA_AWT_WM_NONREPARENTING = "1";
-    # Fcitx5
-    GLFW_IM_MODULE = "fcitx";
-    GTK_IM_MODULE = "fcitx";
-    INPUT_METHOD = "fcitx";
-    XMODIFIERS = "@im=fcitx";
-    IMSETTINGS_MODULE = "fcitx";
-    QT_IM_MODULE = "fcitx";
   };
 
   services.swayidle = {
