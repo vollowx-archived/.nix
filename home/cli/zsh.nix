@@ -1,4 +1,4 @@
-{ config, lib, pkgs, inputs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   programs.zsh = {
@@ -93,18 +93,4 @@
   ];
 
   programs.nix-index.enable = true;
-
-  programs.starship = {
-    enable = true;
-    enableZshIntegration = true;
-    settings = {
-      palette = "catppuccin_mocha";
-    } // builtins.fromTOML
-      (builtins.readFile (inputs.catppuccin-starship + "/palettes/mocha.toml"));
-  };
-
-  programs.zoxide = {
-    enable = true;
-    enableZshIntegration = true;
-  };
 }

@@ -7,6 +7,8 @@
     ./cli/neovim.nix
     ./cli/lazygit.nix
     ./cli/zsh.nix
+    ./cli/starship.nix
+    ./cli/zoxide.nix
 
     ./desktop/gtk.nix
     ./desktop/dunst.nix
