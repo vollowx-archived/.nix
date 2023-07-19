@@ -103,7 +103,7 @@ in {
 
         font = "monospace 12";
         format =
-          "<span font_desc='monospace 12' weight='bold' foreground='#${colors.text}'><i>%a</i></span>\\n%s\\n%b";
+          "<span font_desc='monospace 12' weight='bold' foreground='#${colors.text}'>%a</span>\\n%s\\n%b";
         show_indicators = false;
         mouse_left_click = "do_action";
         mouse_middle_click = "close_all";
@@ -111,8 +111,6 @@ in {
         ellipsize = "end";
         markup = "full";
       };
-
-      fullscreen_delay_everything = { fullscreen = "delay"; };
 
       urgency_low = {
         timeout = 3;
