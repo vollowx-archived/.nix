@@ -51,66 +51,53 @@
       };
       seat = { "*" = { hide_cursor = "when-typing enable"; }; };
 
-      # colors = {
-      #   background = "#${colors.base}";
-      #   focused = {
-      #     background = "#${colors.base}";
-      #     border = "#${colors.pink}";
-      #     childBorder = "#${colors.pink}";
-      #     indicator = "#${colors.rosewater}";
-      #     text = "#${colors.text}";
-      #   };
-      #   focusedInactive = {
-      #     background = "#${colors.base}";
-      #     border = "#${colors.surface2}";
-      #     childBorder = "#${colors.surface2}";
-      #     indicator = "#${colors.rosewater}";
-      #     text = "#${colors.text}";
-      #   };
-      #   placeholder = {
-      #     background = "#${colors.base}";
-      #     border = "#${colors.overlay0}";
-      #     childBorder = "#${colors.overlay0}";
-      #     indicator = "#${colors.overlay0}";
-      #     text = "#${colors.text}";
-      #   };
-      #   unfocused = {
-      #     background = "#${colors.base}";
-      #     border = "#${colors.surface1}";
-      #     childBorder = "#${colors.surface1}";
-      #     indicator = "#${colors.rosewater}";
-      #     text = "#${colors.text}";
-      #   };
-      #   urgent = {
-      #     background = "#${colors.base}";
-      #     border = "#${colors.peach}";
-      #     childBorder = "#${colors.peach}";
-      #     indicator = "#${colors.overlay0}";
-      #     text = "#${colors.text}";
-      #   };
-      # };
-      colors = let
-        style = {
+      colors = {
+        background = "#${colors.base}";
+        focused = {
           background = "#${colors.base}";
-          indicator = "#${colors.text}";
-          border = "#${colors.crust}";
+          border = "#${colors.surface2}";
+          childBorder = "#${colors.surface2}";
+          indicator = "#${colors.overlay0}";
           text = "#${colors.text}";
-          childBorder = "#${colors.crust}";
         };
-      in {
-        focused = style;
-        focusedInactive = style;
-        unfocused = style;
-        urgent = style;
+        focusedInactive = {
+          background = "#${colors.base}";
+          border = "#${colors.surface1}";
+          childBorder = "#${colors.surface1}";
+          indicator = "#${colors.overlay0}";
+          text = "#${colors.text}";
+        };
+        placeholder = {
+          background = "#${colors.base}";
+          border = "#${colors.overlay0}";
+          childBorder = "#${colors.overlay0}";
+          indicator = "#${colors.overlay0}";
+          text = "#${colors.text}";
+        };
+        unfocused = {
+          background = "#${colors.base}";
+          border = "#${colors.surface0}";
+          childBorder = "#${colors.surface0}";
+          indicator = "#${colors.overlay0}";
+          text = "#${colors.text}";
+        };
+        urgent = {
+          background = "#${colors.base}";
+          border = "#${colors.peach}";
+          childBorder = "#${colors.peach}";
+          indicator = "#${colors.overlay0}";
+          text = "#${colors.text}";
+        };
       };
       window = {
         titlebar = false;
-        border = 0;
+        border = 2;
       };
       floating = {
         titlebar = false;
-        border = 0;
+        border = 2;
       };
+      gaps.inner = 4;
       bars = [ ];
 
       keybindings = let

@@ -85,7 +85,7 @@ in {
         width = 320;
         origin = "top-left";
         notification_limit = 0;
-        offset = "16x16";
+        offset = "12x12";
         line_height = "0";
 
         progress_bar_height = 6;
