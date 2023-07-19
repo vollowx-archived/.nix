@@ -124,7 +124,7 @@
         }) (lib.range 0 9));
       in workspaceKeys // {
         "${modifier}+o" = "exec ${pkgs.hyprpicker}/bin/hyprpicker -a -n";
-        "${modifier}+q" = "exec ${pkgs.n-status}/bin/n-status";
+        "${modifier}+q" = "exec status";
         "${modifier}+v" = "exec clipman pick -t wofi";
 
         "${modifier}+Escape" = "exec wlogout";
@@ -151,16 +151,12 @@
         "${modifier}+Shift+e" =
           "exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'";
 
-        "XF86AudioMute" =
-          "exec ${pkgs.n-volume}/bin/n-volume sset Master toggle";
-        "XF86AudioLowerVolume" =
-          "exec ${pkgs.n-volume}/bin/n-volume sset Master 5%-";
-        "XF86AudioRaiseVolume" =
-          "exec ${pkgs.n-volume}/bin/n-volume sset Master 5%+";
-        "XF86MonBrightnessDown" =
-          "exec ${pkgs.n-brightness}/bin/n-brightness set 5%-";
-        "XF86MonBrightnessUp" =
-          "exec ${pkgs.n-brightness}/bin/n-brightness set 5%+";
+        "XF86AudioMute" = "exec volume -t";
+        "XF86AudioMicMute" = "exec microphone -t";
+        "XF86AudioLowerVolume" = "exec volume -d 5";
+        "XF86AudioRaiseVolume" = "exec volume -i 5";
+        "XF86MonBrightnessDown" = "exec brightness set 5%-";
+        "XF86MonBrightnessUp" = "exec brightness set +5%";
       };
     };
   };
@@ -197,7 +193,5 @@
     };
   };
 
-  services.clipman = {
-    enable = true;
-  };
+  services.clipman = { enable = true; };
 }

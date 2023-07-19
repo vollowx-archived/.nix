@@ -66,10 +66,7 @@
         modules = [
           ./hosts/sakura
           ./hosts/common
-          {
-            nixpkgs.overlays =
-              [ neovim-nightly.overlay (import ./overlays/scripts.nix) ];
-          }
+          { nixpkgs.overlays = [ neovim-nightly.overlay ]; }
           home-manager.nixosModules.home-manager
         ];
       };
