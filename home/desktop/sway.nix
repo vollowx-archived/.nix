@@ -2,7 +2,7 @@
 
 {
   home = {
-    packages = with pkgs; [ wlogout wofi brightnessctl wdisplays ];
+    packages = with pkgs; [ wl-clipboard wlogout wofi brightnessctl wdisplays ];
     sessionVariables = {
       # Wayland
       NIXOS_OZONE_WL = "1";
@@ -167,7 +167,6 @@
 
   services.swayidle = {
     enable = true;
-    systemdTarget = "sway-session.target";
     events = [
       {
         event = "before-sleep";
@@ -200,6 +199,5 @@
 
   services.clipman = {
     enable = true;
-    systemdTarget = "sway-session.target";
   };
 }

@@ -1,12 +1,26 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 
 {
   i18n.inputMethod = {
     enabled = "fcitx5";
     fcitx5 = { addons = with pkgs; [ fcitx5-chinese-addons ]; };
   };
-  home.file.".config/fcitx5/conf/classicui.conf".source =
-    ../../conf/fcitx5/classicui.conf;
-  home.file.".local/share/fcitx5/themes/catppuccin-mocha/theme.conf".text =
-    import ../../conf/fcitx5/theme.nix;
+
+  xdg.dataFile."fcitx5/themes/catppuccin-mocha" = {
+    source = inputs.catppuccin-fcitx5 + "/src/catppuccin-mocha";
+  };
+  xdg.configFile."fcitx5/conf/classicui.conf" = {
+    text = ''
+      Vertical Candidate List=True
+      ShowLayoutNameInIcon=True
+      PreferTextIcon=False
+      Theme=catppuccin-mocha
+      Font="JetBrainsMono Nerd Font Medium 12"
+      MenuFont="JetBrainsMono Nerd Font Medium 12"
+      TrayFont="JetBrainsMono Nerd Font Medium 12"
+      PerScreenDPI=True
+      ForceWaylandDPI=0
+      WheelForPaging=True
+    '';
+  };
 }

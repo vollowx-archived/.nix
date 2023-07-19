@@ -10,6 +10,23 @@
     };
 
     neovim-nightly.url = "github:nix-community/neovim-nightly-overlay";
+
+    catppuccin-bat = {
+      url = "github:catppuccin/bat";
+      flake = false;
+    };
+    catppuccin-starship = {
+      url = "github:catppuccin/starship";
+      flake = false;
+    };
+    catppuccin-fcitx5 = {
+      url = "github:catppuccin/fcitx5";
+      flake = false;
+    };
+    catppuccin-grub = {
+      url = "github:catppuccin/grub";
+      flake = false;
+    };
   };
 
   outputs = { nixpkgs, home-manager, neovim-nightly, ... }@inputs:

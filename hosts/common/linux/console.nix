@@ -7,7 +7,7 @@
     colors.green
     colors.yellow
     colors.blue
-    colors.mauve
+    colors.pink
     colors.teal
     colors.text
 
@@ -18,6 +18,6 @@
     colors.blue
     colors.mauve
     colors.teal
-    colors.mauve
+    colors.pink
   ];
 }
