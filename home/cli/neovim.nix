@@ -9,7 +9,13 @@
     vimdiffAlias = true;
     extraPackages = with pkgs; [
       clang
+      gnumake
+      fzy
       lua-language-server
+      nodePackages.typescript
+      nodePackages.typescript-language-server
+      nodePackages.vscode-langservers-extracted
+      nodePackages.yaml-language-server
       marksman
 
       stylua
