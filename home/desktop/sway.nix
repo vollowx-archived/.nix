@@ -91,13 +91,13 @@
       };
       window = {
         titlebar = false;
-        border = 2;
+        border = 0;
       };
       floating = {
         titlebar = false;
-        border = 2;
+        border = 0;
       };
-      gaps.inner = 4;
+      gaps.inner = 0;
       bars = [ ];
 
       keybindings = let
@@ -110,15 +110,15 @@
             "exec 'swaymsg move container to workspace ${toString i}'";
         }) (lib.range 0 9));
       in workspaceKeys // {
-        "${modifier}+o" = "exec ${pkgs.hyprpicker}/bin/hyprpicker -a -n";
-        "${modifier}+q" = "exec status";
-        "${modifier}+v" = "exec clipman pick -t wofi";
-
-        "${modifier}+Escape" = "exec wlogout";
+        "${modifier}+escape" = "exec wlogout";
+        "${modifier}+return" = "exec kitty -1";
         "${modifier}+d" = "exec wofi --show drun";
-        "${modifier}+Return" = "exec kitty -1";
+        "${modifier}+v" = "exec clipman pick -t wofi";
+        "${modifier}+s" = "exec status";
+        "${modifier}+x" = "exec swaylock -f";
+        "${modifier}+o" = "exec ${pkgs.hyprpicker}/bin/hyprpicker -a -n";
 
-        "${modifier}+Shift+q" = "kill";
+        "${modifier}+q" = "kill";
         "${modifier}+r" = "mode 'resize'";
         "${modifier}+h" = "focus left";
         "${modifier}+j" = "focus down";
@@ -131,8 +131,10 @@
         "${modifier}+w" = "layout tabbed";
         "${modifier}+e" = "layout toggle split";
         "${modifier}+f" = "fullscreen";
-        "${modifier}+Space" = "focus mode_toggle";
-        "${modifier}+Shift+Space" = "floating toggle";
+        "${modifier}+space" = "focus mode_toggle";
+        "${modifier}+Shift+space" = "floating toggle";
+        "${modifier}+minus" = "scratchpad show";
+        "${modifier}+Shift+minus" = "move scratchpad";
         "${modifier}+a" = "focus parent";
         "${modifier}+Shift+r" = "reload";
         "${modifier}+Shift+e" =

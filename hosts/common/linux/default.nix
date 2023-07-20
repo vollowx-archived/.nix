@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }:
+{ pkgs, ... }:
 
 {
   imports = [
@@ -17,8 +17,6 @@
       device = "nodev";
       efiSupport = true;
       useOSProber = true;
-
-      theme = inputs.catppuccin-grub + "/src/catppuccin-mocha-grub-theme";
     };
   };
 

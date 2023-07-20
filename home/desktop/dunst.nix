@@ -97,7 +97,7 @@ in {
         icon_position = "left";
         min_icon_size = 48;
         max_icon_size = 64;
-        frame_width = 2;
+        frame_width = 0;
         frame_color = "#${colors.surface1}";
         gap_size = 8;
 

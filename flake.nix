@@ -4,15 +4,16 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
+    nur.url = "github:nix-community/NUR";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    neovim-nightly.url = "github:nix-community/neovim-nightly-overlay";
     nixpkgs-wayland = {
       url = "github:nix-community/nixpkgs-wayland";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    neovim-nightly.url = "github:nix-community/neovim-nightly-overlay";
 
     catppuccin-bat = {
       url = "github:catppuccin/bat";
@@ -24,10 +25,6 @@
     };
     catppuccin-fcitx5 = {
       url = "github:catppuccin/fcitx5";
-      flake = false;
-    };
-    catppuccin-grub = {
-      url = "github:catppuccin/grub";
       flake = false;
     };
   };
