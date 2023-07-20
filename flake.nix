@@ -8,8 +8,11 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
     neovim-nightly.url = "github:nix-community/neovim-nightly-overlay";
+    nixpkgs-wayland = {
+      url = "github:nix-community/nixpkgs-wayland";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     catppuccin-bat = {
       url = "github:catppuccin/bat";
@@ -29,7 +32,8 @@
     };
   };
 
-  outputs = { nixpkgs, home-manager, neovim-nightly, ... }@inputs:
+  outputs =
+    { nixpkgs, home-manager, neovim-nightly, nixpkgs-wayland, ... }@inputs:
     let
       colors = {
         rosewater = "f5e0dc";
@@ -66,7 +70,10 @@
         modules = [
           ./hosts/sakura
           ./hosts/common
-          { nixpkgs.overlays = [ neovim-nightly.overlay ]; }
+          {
+            nixpkgs.overlays =
+              [ neovim-nightly.overlay nixpkgs-wayland.overlay ];
+          }
           home-manager.nixosModules.home-manager
         ];
       };

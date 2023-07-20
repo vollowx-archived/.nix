@@ -18,6 +18,7 @@
       nodePackages.yaml-language-server
       marksman
 
+      nodePackages.prettier
       stylua
       shfmt
       nixfmt
