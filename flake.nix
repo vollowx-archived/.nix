@@ -29,9 +29,12 @@
     };
   };
 
-  outputs =
-    { nixpkgs, home-manager, neovim-nightly, nixpkgs-wayland, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, neovim-nightly, nixpkgs-wayland, ...
+    }@inputs:
     let
+      inherit (self) outputs;
+      forEachSystem = nixpkgs.lib.genAttrs [ "x86_64-linux" ];
+      forEachPkgs = f: forEachSystem (sys: f nixpkgs.legacyPackages.${sys});
       colors = {
         rosewater = "f5e0dc";
         flamingo = "f2cdcd";
@@ -61,18 +64,22 @@
         crust = "11111b";
       };
     in {
-      nixosConfigurations."sakura" = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = { inherit inputs colors; };
-        modules = [
-          ./hosts/sakura
-          ./hosts/common
-          {
-            nixpkgs.overlays =
-              [ neovim-nightly.overlay nixpkgs-wayland.overlay ];
-          }
-          home-manager.nixosModules.home-manager
-        ];
+      packages = forEachPkgs (pkgs: import ./pkgs { inherit pkgs; });
+
+      nixosConfigurations = {
+        "sakura" = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = { inherit inputs colors; };
+          modules = [
+            ./hosts/sakura
+            ./hosts/common
+            {
+              nixpkgs.overlays =
+                [ neovim-nightly.overlay nixpkgs-wayland.overlay ];
+            }
+            home-manager.nixosModules.home-manager
+          ];
+        };
       };
     };
 }
