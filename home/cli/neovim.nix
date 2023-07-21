@@ -10,7 +10,7 @@
     extraPackages = with pkgs; [
       clang
       gnumake
-      fzy
+
       lua-language-server
       nodePackages.typescript
       nodePackages.typescript-language-server
