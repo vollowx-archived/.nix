@@ -2,29 +2,24 @@
   imports = [
     inputs.hardware.nixosModules.common-cpu-intel
     inputs.hardware.nixosModules.common-gpu-intel
-    inputs.hardware.nixosModules.common-ssd
+    inputs.hardware.nixosModules.common-pc-ssd
 
     ./hardware-configuration.nix
 
     ../common/global
     ../common/users/vollow
 
-    ../common/optional/greetd.nix
+    # ../common/optional/greetd.nix
     ../common/optional/pipewire.nix
     ../common/optional/quietboot.nix
     ../common/optional/wireless.nix
   ];
 
   # TODO: theme "greeter" user GTK instead of using misterio to login
-  services.greetd.settings.default_session.user = "vollow";
+  # services.greetd.settings.default_session.user = "vollow";
 
   networking = {
     hostName = "sakura";
-    useDHCP = true;
-    interfaces.enp8s0 = {
-      useDHCP = true;
-      wakeOnLan.enable = true;
-    };
   };
 
   boot = {

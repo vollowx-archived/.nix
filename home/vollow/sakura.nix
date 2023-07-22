@@ -1,12 +1,12 @@
 { inputs, outputs, ... }: {
   imports = [
     ./global
-    ./features/desktop/hyprland
-    ./features/rgb
-    ./features/productivity
-    ./features/pass
-    ./features/games
-    ./features/music
+    ./features/desktop/sway
+    # ./features/rgb
+    # ./features/productivity
+    # ./features/pass
+    # ./features/games
+    # ./features/music
   ];
 
   # colorscheme = inputs.nix-colors.colorschemes.atelier-sulphurpool;
