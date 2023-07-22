@@ -2,83 +2,71 @@
   description = "Flakes for Nix systems.";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.05";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    nur.url = "github:nix-community/NUR";
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    nixpkgs-wayland = {
-      url = "github:nix-community/nixpkgs-wayland";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    neovim-nightly.url = "github:nix-community/neovim-nightly-overlay";
+    home-manager.url = "github:nix-community/home-manager/release-23.05";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    catppuccin-bat = {
-      url = "github:catppuccin/bat";
-      flake = false;
-    };
-    catppuccin-starship = {
-      url = "github:catppuccin/starship";
-      flake = false;
-    };
-    catppuccin-fcitx5 = {
-      url = "github:catppuccin/fcitx5";
-      flake = false;
-    };
+    hardware.url = "github:nixos/nixos-hardware";
+    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+
+    # Shameless plug: looking for a way to nixify your themes and make
+    # everything match nicely? Try nix-colors!
+    # nix-colors.url = "github:misterio77/nix-colors";
   };
 
-  outputs = { self, nixpkgs, home-manager, neovim-nightly, nixpkgs-wayland, ...
-    }@inputs:
+  outputs = { self, nixpkgs, home-manager, ... }@inputs:
     let
       inherit (self) outputs;
-      forEachSystem = nixpkgs.lib.genAttrs [ "x86_64-linux" ];
-      forEachPkgs = f: forEachSystem (sys: f nixpkgs.legacyPackages.${sys});
-      colors = {
-        rosewater = "f5e0dc";
-        flamingo = "f2cdcd";
-        pink = "f5c2e7";
-        mauve = "cba6f7";
-        red = "f38ba8";
-        maroon = "eba0ac";
-        peach = "fab387";
-        yellow = "f9e2af";
-        green = "a6e3a1";
-        teal = "94e2d5";
-        sky = "89dceb";
-        sapphire = "74c7ec";
-        blue = "89b4fa";
-        lavender = "b4befe";
-        text = "cdd6f4";
-        subtext1 = "bac2de";
-        subtext0 = "a6adc8";
-        overlay2 = "9399b2";
-        overlay1 = "7f849c";
-        overlay0 = "6c7086";
-        surface2 = "585b70";
-        surface1 = "45475a";
-        surface0 = "313244";
-        base = "1e1e2e";
-        mantle = "181825";
-        crust = "11111b";
-      };
-    in {
-      packages = forEachPkgs (pkgs: import ./pkgs { inherit pkgs; });
+      forAllSystems = nixpkgs.lib.genAttrs [
+        "aarch64-linux"
+        "i686-linux"
+        "x86_64-linux"
+        "aarch64-darwin"
+        "x86_64-darwin"
+      ];
+    in
+    rec {
+      # Your custom packages
+      # Acessible through 'nix build', 'nix shell', etc
+      packages = forAllSystems (system:
+        let pkgs = nixpkgs.legacyPackages.${system};
+        in import ./pkgs { inherit pkgs; }
+      );
+      # Devshell for bootstrapping
+      # Acessible through 'nix develop' or 'nix-shell' (legacy)
+      devShells = forAllSystems (system:
+        let pkgs = nixpkgs.legacyPackages.${system};
+        in import ./shell.nix { inherit pkgs; }
+      );
 
+      overlays = import ./overlays { inherit inputs; };
+      nixosModules = import ./modules/nixos;
+      homeManagerModules = import ./modules/home-manager;
+
+      # NixOS configuration entrypoint
+      # Available through 'nixos-rebuild --flake .#your-hostname'
       nixosConfigurations = {
-        "sakura" = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = { inherit inputs colors; };
-          modules = [
-            ./hosts/sakura
-            ./hosts/common
-            {
-              nixpkgs.overlays =
-                [ neovim-nightly.overlay nixpkgs-wayland.overlay ];
-            }
-            home-manager.nixosModules.home-manager
-          ];
+        sakura = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs outputs; };
+          modules = [ ./nixos/sakura/configuration.nix ];
+        };
+
+        # If someday I get a new computer (probebly impossible)
+        # hostname = nixpkgs.lib.nixosSystem {
+        #   specialArgs = { inherit inputs outputs; };
+        #   modules = [ ./nixos/hostname/configuration.nix ];
+        # };
+      };
+
+      # Standalone home-manager configuration entrypoint
+      # Available through 'home-manager --flake .#your-username@your-hostname'
+      homeConfigurations = {
+        "vollow@sakura" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.x86_64-linux;
+          extraSpecialArgs = { inherit inputs outputs; };
+          modules = [ ./home-manager/vollow/sakura/home.nix ];
         };
       };
     };
