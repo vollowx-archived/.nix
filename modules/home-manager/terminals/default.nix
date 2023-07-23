@@ -1,0 +1,3 @@
+{
+  foot = import ./foot.nix
+}
