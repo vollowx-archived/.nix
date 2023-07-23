@@ -1,4 +1,4 @@
-{ config, ... : {
+{ config, ... }: {
   programs.starship = {
     enable = true;
     enableBashIntegration = true;
