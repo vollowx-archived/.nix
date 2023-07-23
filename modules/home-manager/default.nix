@@ -4,5 +4,6 @@
 {
   # List your module files here
   # my-module = import ./my-module.nix;
+  desktops = import ./desktops;
   terminals = import ./terminals;
 }
