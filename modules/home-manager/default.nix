@@ -4,5 +4,5 @@
 {
   # List your module files here
   # my-module = import ./my-module.nix;
-  terminals = import ./terminals
+  terminals = import ./terminals;
 }
