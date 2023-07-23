@@ -1,3 +1,3 @@
 {
-  foot = import ./foot.nix
+  foot = import ./foot.nix;
 }
