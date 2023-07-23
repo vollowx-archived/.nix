@@ -61,6 +61,13 @@
   };
 
   # FIXME: Add the rest of your current configuration
+  hardware.opengl = {
+    enable = true;
+    extraPackages = [
+      intel-compute-runtime
+      intel-media-driver
+    ];
+  };
 
   # TODO: Set your hostname
   networking.hostName = "sakura";
