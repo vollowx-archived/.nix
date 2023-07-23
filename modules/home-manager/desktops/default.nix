@@ -1,3 +1,3 @@
 {
-  sway = import ./sway.nix
+  sway = import ./sway.nix;
 }
