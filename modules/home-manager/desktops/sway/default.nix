@@ -3,7 +3,7 @@
 
   wayland.windowManager.sway = {
     enable = true;
-    systemd.enable = true;
+    systemdIntegration = true;
     extraSessionCommands = ''
       export XDG_CURRENT_DESKTOP=sway;
     '';

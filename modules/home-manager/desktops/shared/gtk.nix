@@ -1,11 +1,11 @@
-{ pkgs, config, ... }: {
+{ pkgs, ... }: {
   home.packages = with pkgs; [glib];
 
   xdg.systemDirs.data = let
     schema = pkgs.gsettings-desktop-schemas;
   in ["${schema}/share/gsettings-schemas/${schema.name}"];
 
-  programs.gtk = {
+  gtk = {
     enable = true;
     theme = {
       name = "Catppuccin-Mocha-Compact-Pink-dark";
