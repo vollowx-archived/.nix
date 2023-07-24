@@ -10,7 +10,7 @@
     theme = {
       name = "Catppuccin-Mocha-Compact-Pink-dark";
       package = pkgs.catppuccin-gtk.override {
-        accents = ["pink"];
+        accents = [ "pink" ];
         size = "compact";
         tweaks = [ "black" ];
         variant = "mocha";
@@ -24,7 +24,7 @@
       name = "Papirus-Dark";
     };
     font = {
-      name = "JetBrainsMono Nerd Font";
+      name = "ComicShannsMono Nerd Font";
       size = 12;
     };
   };

@@ -7,12 +7,12 @@
       noto-fonts-cjk
       noto-fonts-extra
       noto-fonts-emoji
-      (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+      (nerdfonts.override { fonts = [ "ComicShannsMono" ]; })
     ];
     fontconfig = {
       defaultFonts = {
         monospace = [
-          "JetBrainsMono Nerd Font"
+          "ComicShannsMono Nerd Font"
           "Noto Sans Mono CJK SC"
           "Noto Color Emoji"
         ];
