@@ -63,7 +63,7 @@
   # FIXME: Add the rest of your current configuration
   hardware.opengl = {
     enable = true;
-    extraPackages = [
+    extraPackages = with pkgs; [
       intel-compute-runtime
       intel-media-driver
     ];
