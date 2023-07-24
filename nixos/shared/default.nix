@@ -6,4 +6,6 @@
     enable = true;
     wifi.macAddress = "random";
   };
+
+  programs.git.enable = true;
 }
