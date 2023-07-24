@@ -60,7 +60,6 @@
     };
   };
 
-  # FIXME: Add the rest of your current configuration
   hardware.opengl = {
     enable = true;
     extraPackages = with pkgs; [
@@ -69,10 +68,8 @@
     ];
   };
 
-  # TODO: Set your hostname
   networking.hostName = "sakura";
 
-  # TODO: This is just an example, be sure to use whatever bootloader you prefer
   boot.loader.systemd-boot.enable = true;
 
   # This setups a SSH server. Very important if you're setting up a headless system.
@@ -93,5 +90,5 @@
   };
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-  system.stateVersion = "23.11";
+  system.stateVersion = "23.05";
 }
