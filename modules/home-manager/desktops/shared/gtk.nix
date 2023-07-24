@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, config, ... }: {
   home.packages = with pkgs; [glib];
 
   xdg.systemDirs.data = let
@@ -27,7 +27,7 @@
       name = "ComicShannsMono Nerd Font";
       size = 12;
     };
-    gtk2.configLocation = "/home/idm1try/.config/gtk-2.0/gtkrc";
+    gtk2.configLocation = "${config.home.homeDirectory}/.config/gtk-2.0/gtkrc";
     gtk3.extraConfig.gtk-application-prefer-dark-theme = 1;
     gtk4.extraConfig.gtk-application-prefer-dark-theme = 1;
   };
