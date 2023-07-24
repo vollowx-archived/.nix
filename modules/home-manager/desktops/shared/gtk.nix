@@ -27,14 +27,28 @@
       name = "ComicShannsMono Nerd Font";
       size = 12;
     };
-
-    gtk3.extraConfig = {
-      gtk-application-prefer-dark-theme = true;
-    };
-    gtk4.extraConfig = {
-      gtk-application-prefer-dark-theme = true;
-    };
+    gtk2.configLocation = "/home/idm1try/.config/gtk-2.0/gtkrc";
+    gtk3.extraConfig.gtk-application-prefer-dark-theme = 1;
+    gtk4.extraConfig.gtk-application-prefer-dark-theme = 1;
   };
-  
+  xdg.configFile."gtk-4.0/gtk.css".text = ''
+    window contents {
+      box-shadow: none;
+    }
+    
+    window {
+      border-radius: 0px;
+    }
+  '';
+  xdg.configFile."gtk-3.0/gtk.css".text = ''
+    window decoration {
+      box-shadow: none;
+    }
+
+    .titlebar,
+    .titlebar .background {
+      border-radius: 0px 0px 0px 0px;
+    }
+  '';
   home.file.".icons/default".source = "${pkgs.catppuccin-cursors.mochaDark}/share/icons/Catppuccin-Mocha-Dark-Cursors";
 }
