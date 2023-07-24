@@ -6,6 +6,7 @@
     enable = true;
     wifi.macAddress = "random";
   };
+  services.v2raya.enable = true;
 
   programs.git.enable = true;
 }
