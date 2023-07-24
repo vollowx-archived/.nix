@@ -4,6 +4,7 @@
 {
   # List your module files here
   # my-module = import ./my-module.nix;
+  browsers = import ./browsers;
   desktops = import ./desktops;
   terminals = import ./terminals;
 }
