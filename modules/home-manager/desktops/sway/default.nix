@@ -1,5 +1,5 @@
 {
-  imports = [ ../shared ../shared/wayland ];
+  imports = [ ../shared ../shared/wayland ./waybar.nix ];
 
   wayland.windowManager.sway = {
     enable = true;
@@ -13,7 +13,7 @@
       modifier = "Mod4";
       input = {
         "type:keyboard" = {
-         xkb_layout = "us";
+          xkb_layout = "us";
           repeat_delay = "200";
           repeat_rate = "30";
         };
@@ -32,9 +32,10 @@
         HDMI-A-1 = { bg = "~/.local/share/backgrounds/Nix.png fill"; };
       };
       seat = { "*" = { hide_cursor = "when-typing enable"; }; };
+      bars = [];
 
       window = {
-        border = 1;
+        border = 2;
         titlebar = false;
       };
       floating = {
