@@ -6,11 +6,14 @@
   wayland.windowManager.sway = {
     enable = true;
     systemd.enable = true;
-    extraSessionCommands = ''
-      export XDG_CURRENT_DESKTOP=sway;
-    '';
-    wrapperFeatures.gtk = true;
     xwayland = true;
+    wrapperFeatures.gtk = true;
+
+    extraSessionCommands = ''
+      export WLR_RENDERER=vulkan
+      export XDG_CURRENT_DESKTOP=sway
+    '';
+
     config = {
       modifier = "Mod4";
       menu = "wofi --show drun";
@@ -39,7 +42,9 @@
         right = config.wayland.windowManager.sway.config.right;
       in {
         "${modifier}+Escape" = "exec wlogout";
+        "${modifier}+x" = "exec swaylock -f";
         "${modifier}+Shift+v" = "exec clipman pick --tool=wofi";
+        "${modifier}+o" = "exec hyprpicker -a -n";
 
         "${modifier}+Return" = "exec ${terminal}";
         "${modifier}+Shift+q" = "kill";
