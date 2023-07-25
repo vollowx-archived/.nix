@@ -59,7 +59,7 @@
           "device" = "intel_backlight";
           "format" =
             "<span size='13000' foreground='#89B4FA'>{icon}</span> {percent}%";
-          "format-icons" = [ "" "󰖨" ];
+          "format-icons" = [ "󰖔" "󰖨" ];
         };
         "tray" = {
           "icon-size" = 16;
@@ -155,11 +155,11 @@
       #tray,
       #custom-weather {
         font-family: monospace;
-        font-size: 14px;
+        font-size: 12pt;
         padding: 2px 10px;
         background: shade(alpha(@base01, 0.8), 1);
         border-radius: 15px;
-        margin: 4px 5px;
+        margin: 4px;
       }
 
       #workspaces button {
