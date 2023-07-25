@@ -86,14 +86,15 @@
         touchpad {
           natural_scroll = true
           disable_while_typing = false
+          scroll_factor = 0.45
         }
 
-        sensitivity = 0
+        sensitivity = 0.27
       }
 
       general {
         gaps_in = 5
-        gaps_out = 10
+        gaps_out = 5
         border_size = 2
         col.active_border = $pink
         col.inactive_border = $surface0
@@ -140,7 +141,7 @@
 
         animation = workspaces, 1, 3, default, slidevert
         animation = windows,    1, 3, default, slide
-        animation = border,     1, 3, default
+        animation = border,     1, 1, default
         animation = fade,       1, 3, default
       }
 
@@ -175,7 +176,7 @@
       bind = SUPER SHIFT, space, togglefloating,
       bind = SUPER, f, fullscreen,
       bind = SUPER SHIFT, p, pin,
-      bind = SUPER SHIFT, c, reload
+      bind = SUPER SHIFT, c, exec, hyprctl reload
       bind = SUPER, e, togglesplit, # dwindle
 
       bind = SUPER, h, movefocus, l
@@ -208,8 +209,8 @@
       bind = SUPER SHIFT, 8, movetoworkspacesilent, 8
       bind = SUPER SHIFT, 9, movetoworkspacesilent, 9
 
-      bind = SUPER, minus, movetoworkspacesilent, special
-      bind = SUPER, equal, togglespecialworkspace
+      bind = SUPER SHIFT, minus, movetoworkspacesilent, special
+      bind = SUPER, minus, togglespecialworkspace
 
       bind = SUPER, mouse_down, workspace, e+1
       bind = SUPER, mouse_up, workspace, e-1
