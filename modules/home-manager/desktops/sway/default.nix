@@ -114,14 +114,14 @@
       seat = { "*" = { hide_cursor = "when-typing enable"; }; };
       bars = [ ];
       window = {
-        border = 2;
+        border = 3;
         titlebar = false;
       };
       floating = {
-        border = 2;
+        border = 3;
         titlebar = false;
       };
-      gaps.inner = 4;
+      gaps.inner = 6;
     };
   };
 
