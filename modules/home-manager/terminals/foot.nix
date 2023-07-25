@@ -4,7 +4,7 @@
     enable = true;
     settings = {
       main = {
-        font = "ComicShannsMono Nerd Font:size=10";
+        font = "monospace:size=7";
         dpi-aware = "yes";
       };
       colors = {
