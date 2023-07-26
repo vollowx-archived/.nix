@@ -60,7 +60,7 @@ let
       -u low
   '';
 
-  status = pkgs.writeShellScriptBin "status" ''
+  status = pkgs.writeShellScriptBin "notify-status" ''
     #!/usr/bin/env bash
 
     date=$(date +'%A, %#d %B %H:%M')
@@ -71,7 +71,7 @@ let
     wifi=$(nmcli device show wlp0s20f3 | rg --replace ''' 'GENERAL.CONNECTION:                     ')
 
     ${notify-send} -r 69 \
-      -a "''${date}" "Battery at $battery $battery_status\nConnected to $wifi" \
+      -a "''${date}" "Battery at $battery $battery_status, Connected to $wifi" \
       -h int:value:"$battery" \
       -t 888 \
       -u low

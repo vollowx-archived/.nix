@@ -45,6 +45,14 @@
         "${modifier}+x" = "exec swaylock -f";
         "${modifier}+Shift+v" = "exec clipman pick --tool=wofi";
         "${modifier}+o" = "exec hyprpicker -a -n";
+        "${modifier}+q" = "exec notify-status";
+
+        "XF86AudioMute" = "exec volume -t";
+        "XF86AudioMicMute" = "exec microphone -t";
+        "XF86AudioLowerVolume" = "exec volume -d 5";
+        "XF86AudioRaiseVolume" = "exec volume -i 5";
+        "XF86MonBrightnessDown" = "exec brightness set 5%-";
+        "XF86MonBrightnessUp" = "exec brightness set +5%";
 
         "${modifier}+Return" = "exec ${terminal}";
         "${modifier}+Shift+q" = "kill";
