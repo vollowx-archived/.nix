@@ -6,5 +6,6 @@
   # my-module = import ./my-module.nix;
   browsers = import ./browsers;
   desktops = import ./desktops;
+  games = import ./games;
   terminals = import ./terminals;
 }

@@ -8,6 +8,7 @@
     outputs.homeManagerModules.desktops.hyprland
     outputs.homeManagerModules.desktops.sway
     outputs.homeManagerModules.terminals.foot
+    outputs.homeManagerModules.games.minecraft
 
     # Or modules exported from other flakes (such as nix-colors):
     # inputs.nix-colors.homeManagerModules.default
