@@ -5,7 +5,6 @@
 
     # If you want to use modules your own flake exports (from modules/home-manager):
     outputs.homeManagerModules.browsers.firefox
-    outputs.homeManagerModules.desktops.hyprland
     outputs.homeManagerModules.desktops.sway
     outputs.homeManagerModules.terminals.foot
     outputs.homeManagerModules.games.minecraft

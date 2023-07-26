@@ -1,7 +1,7 @@
 { config, ... }:
 
 {
-  imports = [ ../shared ../shared/wayland ./waybar.nix ];
+  imports = [ ../shared ../shared/wayland ./dunst.nix ];
 
   wayland.windowManager.sway = {
     enable = true;
@@ -10,7 +10,7 @@
     wrapperFeatures.gtk = true;
 
     extraSessionCommands = ''
-      export WLR_RENDERER=vulkan
+      # export WLR_RENDERER=vulkan
       export XDG_CURRENT_DESKTOP=sway
     '';
 
