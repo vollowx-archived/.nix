@@ -20,10 +20,27 @@
     httpie # Better curl
     diffsitter # Better diff
     jq # JSON pretty printer and manipulator
+    unzip # Zip tools
 
-    nil # Nix LSP
-    nixfmt # Nix formatter
+    # Developing tools
+    nodePackages.yarn
+    gnumake
 
-    ltex-ls # Spell checking LSP
+    # LSPs
+    clang # C/C++
+    nil # Nix
+    lua-language-server
+    nodePackages.typescript
+    nodePackages.typescript-language-server
+    nodePackages.vscode-langservers-extracted
+    nodePackages.yaml-language-server
+    marksman # Markdown
+    ltex-ls # Spell checking
+
+    # Formatters
+    nodePackages.prettier
+    stylua
+    shfmt
+    nixfmt
   ];
 }
