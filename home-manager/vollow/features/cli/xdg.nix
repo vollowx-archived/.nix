@@ -1,4 +1,4 @@
-{
+{ pkgs, ... }: {
   xdg = {
     enable = true;
     userDirs = {
@@ -6,4 +6,6 @@
       createDirectories = true;
     };
   };
+
+  home.packages = with pkgs; [ xdg-utils ];
 }
