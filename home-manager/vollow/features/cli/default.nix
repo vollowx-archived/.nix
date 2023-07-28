@@ -23,7 +23,7 @@
     unzip # Zip tools
 
     # Developing tools
-    nodePackages.yarn
+    nodePackages.pnpm
     gnumake
 
     # LSPs
