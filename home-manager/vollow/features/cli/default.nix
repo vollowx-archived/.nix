@@ -7,6 +7,7 @@
     ./pfetch.nix
     ./ranger.nix
     ./starship.nix
+    ./xdg.nix
     ./zoxide.nix
   ];
 
