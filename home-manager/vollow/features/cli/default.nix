@@ -18,8 +18,6 @@
     exa # Better ls
     ripgrep # Better grep
     fd # Better find
-    httpie # Better curl
-    diffsitter # Better diff
     jq # JSON pretty printer and manipulator
     unzip # Zip tools
 
@@ -29,15 +27,15 @@
     clang
 
     # LSPs
-    clangd # C/C++
     nil # Nix
-    lua-language-server
+    clang-tools # C/C++
+    lua-language-server # Lua
     nodePackages.typescript
-    nodePackages.typescript-language-server
-    nodePackages.vscode-langservers-extracted
-    nodePackages.yaml-language-server
+    nodePackages.typescript-language-server # Typescript
+    nodePackages.vscode-langservers-extracted # HTML, CSS, Json
+    nodePackages.yaml-language-server # Yaml
     marksman # Markdown
-    ltex-ls # Spell checking
+    ltex-ls # Spell
 
     # Formatters
     nodePackages.prettier
