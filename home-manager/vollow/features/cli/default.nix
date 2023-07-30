@@ -26,9 +26,10 @@
     # Developing tools
     nodePackages.pnpm
     gnumake
+    clang
 
     # LSPs
-    clang # C/C++
+    clangd # C/C++
     nil # Nix
     lua-language-server
     nodePackages.typescript

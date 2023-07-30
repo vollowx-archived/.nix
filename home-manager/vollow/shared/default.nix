@@ -1,7 +1,5 @@
 { inputs, lib, pkgs, config, outputs, ... }: {
-  imports = [
-    ../features/cli
-  ];
+  imports = [ ../features/cli ];
 
   nixpkgs = {
     overlays = [

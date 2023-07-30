@@ -1,9 +1,8 @@
 { pkgs, config, ... }: {
-  home.packages = with pkgs; [glib];
+  home.packages = with pkgs; [ glib ];
 
-  xdg.systemDirs.data = let
-    schema = pkgs.gsettings-desktop-schemas;
-  in ["${schema}/share/gsettings-schemas/${schema.name}"];
+  xdg.systemDirs.data = let schema = pkgs.gsettings-desktop-schemas;
+  in [ "${schema}/share/gsettings-schemas/${schema.name}" ];
 
   gtk = {
     enable = true;
@@ -35,7 +34,7 @@
     window contents {
       box-shadow: none;
     }
-    
+
     window {
       border-radius: 0px;
     }
@@ -50,5 +49,6 @@
       border-radius: 0px 0px 0px 0px;
     }
   '';
-  home.file.".icons/default".source = "${pkgs.catppuccin-cursors.mochaDark}/share/icons/Catppuccin-Mocha-Dark-Cursors";
+  home.file.".icons/default".source =
+    "${pkgs.catppuccin-cursors.mochaDark}/share/icons/Catppuccin-Mocha-Dark-Cursors";
 }

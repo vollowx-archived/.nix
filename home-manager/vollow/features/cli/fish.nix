@@ -1,5 +1,1 @@
-{ config, ... }: {
-  programs.fish = {
-    enable = true;
-  };
-}
+{ config, ... }: { programs.fish = { enable = true; }; }

@@ -1,3 +1,1 @@
-{
-  minecraft = import ./minecraft.nix;
-}
+{ minecraft = import ./minecraft.nix; }
