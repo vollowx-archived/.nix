@@ -6,10 +6,19 @@
   # This one contains whatever you want to overlay
   # You can change versions, add patches, set compilation flags, anything really.
   # https://nixos.wiki/wiki/Overlays
-  modifications = final: prev:
-    {
-      # example = prev.example.overrideAttrs (oldAttrs: rec {
-      # ...
-      # });
+  modifications = final: prev: {
+    # example = prev.example.overrideAttrs (oldAttrs: rec {
+    # ...
+    # });
+    sf-mono-liga-bin = prev.stdenvNoCC.mkDerivation rec {
+      pname = "sf-mono-liga-bin";
+      version = "dev";
+      src = inputs.sf-mono-liga-src;
+      dontConfigure = true;
+      installPhase = ''
+        mkdir -p $out/share/fonts/opentype
+        cp -R $src/*.otf $out/share/fonts/opentype/
+      '';
     };
+  };
 }

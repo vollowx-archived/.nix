@@ -23,7 +23,7 @@
       name = "Papirus-Dark";
     };
     font = {
-      name = "ComicShannsMono Nerd Font";
+      name = "Liga SFMono Nerd Font";
       size = 12;
     };
     gtk2.configLocation = "${config.home.homeDirectory}/.config/gtk-2.0/gtkrc";

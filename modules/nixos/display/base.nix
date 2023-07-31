@@ -7,12 +7,12 @@
       noto-fonts-cjk
       noto-fonts-extra
       noto-fonts-emoji
-      (nerdfonts.override { fonts = [ "ComicShannsMono" ]; })
+      sf-mono-liga-bin
     ];
     fontconfig = {
       defaultFonts = {
         monospace = [
-          "ComicShannsMono Nerd Font"
+          "Liga SFMono Nerd Font"
           "Noto Sans Mono CJK SC"
           "Noto Color Emoji"
         ];

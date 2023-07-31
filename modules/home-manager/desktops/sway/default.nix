@@ -121,8 +121,8 @@
       };
 
       output = {
-        eDP-1 = { bg = "~/.local/share/backgrounds/Nix.png fill"; };
-        HDMI-A-1 = { bg = "~/.local/share/backgrounds/Nix.png fill"; };
+        eDP-1 = { bg = "#000000 solid_color"; };
+        HDMI-A-1 = { bg = "#000000 solid_color"; };
       };
       seat = { "*" = { hide_cursor = "when-typing enable"; }; };
       bars = [ ];

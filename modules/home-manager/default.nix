@@ -7,5 +7,6 @@
   browsers = import ./browsers;
   desktops = import ./desktops;
   games = import ./games;
+  ime = import ./ime;
   terminals = import ./terminals;
 }
