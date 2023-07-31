@@ -10,9 +10,9 @@
       ShowLayoutNameInIcon=True
       PreferTextIcon=False
       Theme=catppuccin-mocha
-      Font="JetBrainsMono Nerd Font Medium 12"
-      MenuFont="JetBrainsMono Nerd Font Medium 12"
-      TrayFont="JetBrainsMono Nerd Font Medium 12"
+      Font="Liga SFMono Nerd Font Medium 12"
+      MenuFont="Liga SFMono Nerd Font Medium 12"
+      TrayFont="Liga SFMono Nerd Font Medium 12"
       PerScreenDPI=True
       ForceWaylandDPI=0
       WheelForPaging=True
