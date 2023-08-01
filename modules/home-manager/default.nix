@@ -8,5 +8,6 @@
   desktops = import ./desktops;
   games = import ./games;
   ime = import ./ime;
+  misc = import ./misc;
   terminals = import ./terminals;
 }
