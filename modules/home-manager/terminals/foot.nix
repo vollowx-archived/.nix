@@ -5,7 +5,6 @@
     settings = {
       main = {
         font = "monospace:size=7";
-        line-height = "23px";
         dpi-aware = "yes";
       };
       cursor = { style = "underline"; };
