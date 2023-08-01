@@ -32,6 +32,22 @@
         "type": "github"
       }
     },
+    "catppuccin-obs": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1688594945,
+        "narHash": "sha256-8DjAjpYsC9lEHe6gt/B7YCyfqVPaA5Qg1hbIMyyx/ho=",
+        "owner": "catppuccin",
+        "repo": "obs",
+        "rev": "9a78d89d186afbdcc719a1cb7bbf7fb1c2fdd248",
+        "type": "github"
+      },
+      "original": {
+        "owner": "catppuccin",
+        "repo": "obs",
+        "type": "github"
+      }
+    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -368,6 +384,7 @@
     "root": {
       "inputs": {
         "catppuccin-fcitx5": "catppuccin-fcitx5",
+        "catppuccin-obs": "catppuccin-obs",
         "hardware": "hardware",
         "home-manager": "home-manager",
         "neovim-nightly-overlay": "neovim-nightly-overlay",

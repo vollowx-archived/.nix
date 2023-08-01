@@ -38,6 +38,10 @@
       url = "github:catppuccin/fcitx5";
       flake = false;
     };
+    catppuccin-obs = {
+      url = "github:catppuccin/obs";
+      flake = false;
+    };
   };
 
   outputs = { self, nixpkgs, home-manager, ... }@inputs:

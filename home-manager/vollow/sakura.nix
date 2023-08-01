@@ -12,6 +12,7 @@
     outputs.homeManagerModules.ime.fcitx5.base
     outputs.homeManagerModules.ime.fcitx5.chinese
     outputs.homeManagerModules.ime.fcitx5.japanese
+    outputs.homeManagerModules.misc.obs-studio
     outputs.homeManagerModules.misc.tty-clock
     outputs.homeManagerModules.terminals.foot
 
