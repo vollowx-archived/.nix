@@ -1,5 +1,9 @@
-{
-  xdg.portal.wlr.enable = true;
+{ pkgs, ... }: {
+  xdg.portal = {
+    enable = true;
+    wlr.enable = true;
+    extraPortals = with pkgs; [ xdg-desktop-portal-gtk ];
+  };
   services.pipewire = {
     enable = true;
     alsa.enable = true;

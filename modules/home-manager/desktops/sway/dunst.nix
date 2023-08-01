@@ -1,6 +1,7 @@
-{ pkgs, ... }:
-# { pkgs, colors, ... }:
+{ pkgs, config, ... }:
 let
+  inherit (config.colorscheme) colors;
+
   notify-send = pkgs.libnotify + "/bin/notify-send";
   pamixer = pkgs.pamixer + "/bin/pamixer";
 
@@ -100,13 +101,12 @@ in {
         min_icon_size = 48;
         max_icon_size = 64;
         frame_width = 2;
-        # frame_color = "#${colors.surface1}";
+        frame_color = "#${colors.base03}";
         gap_size = 8;
 
         font = "monospace 12";
         format =
-          "<span font_desc='monospace 12' weight='bold'><i>%a</i></span>\\n%s\\n%b";
-        # "<span font_desc='monospace 12' weight='bold' foreground='#${colors.text}'><i>%a</i></span>\\n%s\\n%b";
+          "<span font_desc='monospace 12' weight='bold' foreground='#${colors.base05}'><i>%a</i></span>\\n%s\\n%b";
         show_indicators = false;
         mouse_left_click = "do_action";
         mouse_middle_click = "close_all";
@@ -117,21 +117,21 @@ in {
 
       urgency_low = {
         timeout = 3;
-        #   background = "#${colors.mantle}";
-        #   foreground = "#${colors.text}";
-        #   highlight = "#${colors.pink}";
+        background = "#${colors.base01}";
+        foreground = "#${colors.base05}";
+        highlight = "#${colors.base0E}";
       };
       urgency_normal = {
         timeout = 6;
-        #   background = "#${colors.mantle}";
-        #   foreground = "#${colors.text}";
-        #   highlight = "#${colors.pink}";
+        background = "#${colors.base01}";
+        foreground = "#${colors.base05}";
+        highlight = "#${colors.base0E}";
       };
       urgency_critical = {
         timeout = 0;
-        #   background = "#${colors.mantle}";
-        #   foreground = "#${colors.text}";
-        #   highlight = "#${colors.pink}";
+        background = "#${colors.base01}";
+        foreground = "#${colors.base05}";
+        highlight = "#${colors.base0E}";
       };
     };
   };

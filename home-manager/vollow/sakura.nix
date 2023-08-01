@@ -14,6 +14,8 @@
     outputs.homeManagerModules.ime.fcitx5.japanese
 
     # Or modules exported from other flakes (such as nix-colors):
-    # inputs.nix-colors.homeManagerModules.default
+    inputs.nix-colors.homeManagerModules.default
   ];
+
+  colorscheme = inputs.nix-colors.colorSchemes.catppuccin-mocha;
 }

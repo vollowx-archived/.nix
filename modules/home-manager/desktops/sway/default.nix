@@ -1,6 +1,6 @@
-{ config, ... }:
-
-{
+{ config, pkgs, ... }:
+let inherit (config.colorscheme) colors;
+in {
   imports = [ ../shared ../shared/wayland ./dunst.nix ];
 
   wayland.windowManager.sway = {
@@ -121,8 +121,8 @@
       };
 
       output = {
-        eDP-1 = { bg = "#000000 solid_color"; };
-        HDMI-A-1 = { bg = "#000000 solid_color"; };
+        eDP-1 = { bg = "#${colors.base01} solid_color"; };
+        HDMI-A-1 = { bg = "#${colors.base01} solid_color"; };
       };
       seat = { "*" = { hide_cursor = "when-typing enable"; }; };
       bars = [ ];
@@ -135,6 +135,44 @@
         titlebar = false;
       };
       gaps.inner = 5;
+      colors = {
+        background = colors.base01;
+        focused = {
+          background = colors.base00;
+          border = colors.base0E;
+          childBorder = colors.base0E;
+          indicator = colors.base0E;
+          text = colors.base05;
+        };
+        focusedInactive = {
+          background = colors.base00;
+          border = colors.base03;
+          childBorder = colors.base03;
+          indicator = colors.base03;
+          text = colors.base05;
+        };
+        placeholder = {
+          background = colors.base00;
+          border = colors.base02;
+          childBorder = colors.base02;
+          indicator = colors.base02;
+          text = colors.base05;
+        };
+        unfocused = {
+          background = colors.base00;
+          border = colors.base02;
+          childBorder = colors.base02;
+          indicator = colors.base02;
+          text = colors.base05;
+        };
+        urgent = {
+          background = colors.base00;
+          border = colors.base06;
+          childBorder = colors.base06;
+          indicator = colors.base06;
+          text = colors.base05;
+        };
+      };
     };
   };
 
@@ -143,7 +181,7 @@
     events = [
       {
         event = "before-sleep";
-        command = "swaylock -f";
+        command = "${pkgs.swaylock}/bin/swaylock -f";
       }
       {
         event = "after-resume";
@@ -153,12 +191,18 @@
     timeouts = [
       {
         timeout = 300;
-        command = "swaylock -f";
+        command = "${pkgs.swaylock}/bin/swaylock -f";
       }
       {
         timeout = 600;
         command = "swaymsg 'output * dpms off'";
       }
     ];
+  };
+
+  programs.swaylock = {
+    settings = {
+      daemonize = true;
+    };
   };
 }
