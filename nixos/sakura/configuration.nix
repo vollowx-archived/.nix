@@ -4,6 +4,7 @@
     # If you want to use modules your own flake exports (from modules/nixos):
     outputs.nixosModules.display.base
     outputs.nixosModules.display.wayland
+    outputs.nixosModules.misc.virt-manager
     outputs.nixosModules.printing.base
     outputs.nixosModules.printing.graphical
     outputs.nixosModules.printing.hp

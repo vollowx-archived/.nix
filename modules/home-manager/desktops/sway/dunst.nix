@@ -78,7 +78,7 @@ let
       -u low
   '';
 in {
-  home.packages = with pkgs; [ volume microphone brightness status ];
+  home.packages = [ volume microphone brightness status ];
 
   services.dunst = {
     enable = true;

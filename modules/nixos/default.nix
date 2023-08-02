@@ -5,5 +5,6 @@
   # List your module files here
   # my-module = import ./my-module.nix;
   display = import ./display;
+  misc = import ./misc;
   printing = import ./printing;
 }

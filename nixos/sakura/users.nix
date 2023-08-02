@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: {
+{ pkgs, ... }: {
   users.users = {
     vollow = {
       # TODO: You can set an initial password for your user.
@@ -10,7 +10,7 @@
         # TODO: Add your SSH public key(s) here, if you plan on using SSH to connect
       ];
       # TODO: Be sure to add any other groups you need (such as networkmanager, audio, docker, etc)
-      extraGroups = [ "wheel" "networkmanager" "audio" "video" ];
+      extraGroups = [ "wheel" "networkmanager" "audio" "video" "libvirtd" ];
       shell = pkgs.fish;
     };
   };
