@@ -18,7 +18,7 @@ in {
         regular2 = colors.base0B; # green
         regular3 = colors.base0A; # yellow
         regular4 = colors.base0D; # blue
-        regular5 = colors.base0E; # pink
+        regular5 = colors.base0E; # mauve
         regular6 = colors.base0C; # teal
         regular7 = colors.base05; # Subtext 1
         bright0 = colors.base04; # Surface 2
@@ -26,9 +26,9 @@ in {
         bright2 = colors.base0B; # green
         bright3 = colors.base0A; # yellow
         bright4 = colors.base0D; # blue
-        bright5 = colors.base0E; # pink
+        bright5 = colors.base0E; # mauve
         bright6 = colors.base0C; # teal
-        bright7 = colors.base07; # Subtext 0
+        bright7 = colors.base02; # Subtext 0
       };
     };
   };
