@@ -18,7 +18,7 @@ in {
     colors.base0D
     colors.base0E
     colors.base0C
-    colors.base02
+    colors.base0E
   ];
 
   security.doas.enable = true;
