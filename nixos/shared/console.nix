@@ -16,8 +16,8 @@ in {
     colors.base0B
     colors.base0A
     colors.base0D
-    colors.base0E
+    colors.base07
     colors.base0C
-    colors.base0E
+    colors.base0B
   ];
 }

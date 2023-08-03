@@ -3,6 +3,7 @@
     ./bash.nix
     ./fish.nix
     ./git.nix
+    ./neofetch.nix
     ./neovim.nix
     ./pfetch.nix
     ./ranger.nix

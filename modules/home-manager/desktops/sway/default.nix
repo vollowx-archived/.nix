@@ -140,9 +140,9 @@ in {
         background = colors.base01;
         focused = {
           background = colors.base00;
-          border = colors.base0E;
-          childBorder = colors.base0E;
-          indicator = colors.base0E;
+          border = colors.base0B;
+          childBorder = colors.base0B;
+          indicator = colors.base0B;
           text = colors.base05;
         };
         focusedInactive = {
