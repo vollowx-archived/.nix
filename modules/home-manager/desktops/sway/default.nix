@@ -122,8 +122,8 @@ in {
       };
 
       output = {
-        eDP-1 = { bg = "#${colors.colors.base01} solid_color"; };
-        HDMI-A-1 = { bg = "#${colors.colors.base01} solid_color"; };
+        eDP-1 = { bg = "#${colors.base01} solid_color"; };
+        HDMI-A-1 = { bg = "#${colors.base01} solid_color"; };
       };
       seat = { "*" = { hide_cursor = "when-typing enable"; }; };
       bars = [ ];
@@ -137,41 +137,41 @@ in {
       };
       gaps.inner = 5;
       colors = {
-        background = colors.colors.base01;
+        background = colors.base01;
         focused = {
-          background = colors.colors.base00;
-          border = colors.colors.base0B;
-          childBorder = colors.colors.base0B;
-          indicator = colors.colors.base0B;
-          text = colors.colors.base05;
+          background = colors.base00;
+          border = colors.base0B;
+          childBorder = colors.base0B;
+          indicator = colors.base0B;
+          text = colors.base05;
         };
         focusedInactive = {
-          background = colors.colors.base00;
-          border = colors.colors.base03;
-          childBorder = colors.colors.base03;
-          indicator = colors.colors.base03;
-          text = colors.colors.base05;
+          background = colors.base00;
+          border = colors.base03;
+          childBorder = colors.base03;
+          indicator = colors.base03;
+          text = colors.base05;
         };
         placeholder = {
-          background = colors.colors.base00;
-          border = colors.colors.base02;
-          childBorder = colors.colors.base02;
-          indicator = colors.colors.base02;
-          text = colors.colors.base05;
+          background = colors.base00;
+          border = colors.base02;
+          childBorder = colors.base02;
+          indicator = colors.base02;
+          text = colors.base05;
         };
         unfocused = {
-          background = colors.colors.base00;
-          border = colors.colors.base02;
-          childBorder = colors.colors.base02;
-          indicator = colors.colors.base02;
-          text = colors.colors.base05;
+          background = colors.base00;
+          border = colors.base02;
+          childBorder = colors.base02;
+          indicator = colors.base02;
+          text = colors.base05;
         };
         urgent = {
-          background = colors.colors.base00;
-          border = colors.colors.base06;
-          childBorder = colors.colors.base06;
-          indicator = colors.colors.base06;
-          text = colors.colors.base05;
+          background = colors.base00;
+          border = colors.base06;
+          childBorder = colors.base06;
+          indicator = colors.base06;
+          text = colors.base05;
         };
       };
     };
@@ -211,30 +211,30 @@ in {
 
       color = "00000000";
 
-      bs-hl-color = "#${colors.colors.base08}";
-      key-hl-color = "#${colors.colors.base0C}";
+      bs-hl-color = "#${colors.base08}";
+      key-hl-color = "#${colors.base0B}";
 
-      inside-color = "#${colors.colors.base01}";
-      inside-clear-color = "#${colors.colors.base01}";
-      inside-ver-color = "#${colors.colors.base01}";
-      inside-wrong-color = "#${colors.colors.base01}";
+      inside-color = "#${colors.base01}";
+      inside-clear-color = "#${colors.base01}";
+      inside-ver-color = "#${colors.base01}";
+      inside-wrong-color = "#${colors.base01}";
 
-      line-color = "#${colors.colors.base00}";
-      line-ver-color = "#${colors.colors.base00}";
-      line-clear-color = "#${colors.colors.base00}";
-      line-wrong-color = "#${colors.colors.base00}";
+      line-color = "#${colors.base00}";
+      line-ver-color = "#${colors.base00}";
+      line-clear-color = "#${colors.base00}";
+      line-wrong-color = "#${colors.base00}";
 
-      ring-color = "#${colors.colors.base03}";
-      ring-clear-color = "#${colors.colors.base0C}";
-      ring-ver-color = "#${colors.colors.base0C}";
-      ring-wrong-color = "#${colors.colors.base08}";
+      ring-color = "#${colors.base04}";
+      ring-clear-color = "#${colors.base06}";
+      ring-ver-color = "#${colors.base0D}";
+      ring-wrong-color = "#${colors.base08}";
 
       separator-color = "00000000";
 
-      text-color = "#${colors.colors.base06}";
-      text-clear-color = "#${colors.colors.base05}";
-      text-ver-color = "#${colors.colors.base04}";
-      text-wrong-color = "#${colors.colors.base08}";
+      text-color = "#${colors.base04}";
+      text-clear-color = "#${colors.base06}";
+      text-ver-color = "#${colors.base0D}";
+      text-wrong-color = "#${colors.base08}";
     };
   };
 }
