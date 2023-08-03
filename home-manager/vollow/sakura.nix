@@ -15,6 +15,7 @@
     outputs.homeManagerModules.misc.obs-studio
     outputs.homeManagerModules.misc.tty-clock
     outputs.homeManagerModules.terminals.foot
+    outputs.homeManagerModules.terminals.kitty
 
     # Or modules exported from other flakes (such as nix-colors):
     inputs.nix-colors.homeManagerModules.default

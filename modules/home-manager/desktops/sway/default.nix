@@ -16,6 +16,7 @@ in {
 
     config = {
       modifier = "Mod4";
+      terminal = "kitty";
       menu = "wofi --show drun";
       input = {
         "type:keyboard" = {
@@ -200,9 +201,5 @@ in {
     ];
   };
 
-  programs.swaylock = {
-    settings = {
-      daemonize = true;
-    };
-  };
+  programs.swaylock = { settings = { daemonize = true; }; };
 }

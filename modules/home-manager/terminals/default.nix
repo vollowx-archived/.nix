@@ -1,1 +1,4 @@
-{ foot = import ./foot.nix; }
+{
+  foot = import ./foot.nix;
+  kitty = import ./kitty.nix;
+}

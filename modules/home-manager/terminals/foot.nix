@@ -5,11 +5,7 @@ in {
   programs.foot = {
     enable = true;
     settings = {
-      main = {
-        font = "monospace:size=7";
-        dpi-aware = "yes";
-      };
-      cursor = { style = "underline"; };
+      main = { dpi-aware = "yes"; };
       colors = {
         foreground = colors.base05; # Text
         background = colors.base00; # Base
