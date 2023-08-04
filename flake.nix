@@ -84,7 +84,7 @@
       nixosConfigurations = {
         sakura = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs outputs; };
-          modules = [ ./nixos/sakura/configuration.nix ];
+          modules = [ ./hosts/sakura ];
         };
       };
 
@@ -94,7 +94,7 @@
         "vollow@sakura" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
           extraSpecialArgs = { inherit inputs outputs; };
-          modules = [ ./home-manager/vollow/sakura.nix ];
+          modules = [ ./home/vollow/sakura.nix ];
         };
       };
     };
