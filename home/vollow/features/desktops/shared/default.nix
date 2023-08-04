@@ -8,5 +8,6 @@
     ./firefox.nix
     ./kitty.nix
     ./obs-studio.nix
+    ./printing.nix
   ];
 }
