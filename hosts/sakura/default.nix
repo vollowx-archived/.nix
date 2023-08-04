@@ -10,10 +10,10 @@
     ../shared/base
     ../shared/users/vollow
 
-    ../shared/optional/anti-gfw.nix
     ../shared/optional/fonts.nix
     ../shared/optional/pipewire.nix
     ../shared/optional/printing.nix
+    ../shared/optional/v2raya.nix
     ../shared/optional/virtualisation.nix
     ../shared/optional/xdg-desktop-portal.nix
   ];
