@@ -4,11 +4,20 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs";
 
-    home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    neovim-nightly-overlay = {
+      url = "github:nix-community/neovim-nightly-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nixpkgs-wayland = {
+      url = "github:nix-community/nixpkgs-wayland";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     hardware.url = "github:nixos/nixos-hardware";
-    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
 
     # scheme: "Catppuccin Mocha"
     # author: "https://github.com/catppuccin/catppuccin"

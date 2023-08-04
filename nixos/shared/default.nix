@@ -39,6 +39,7 @@
 
       # You can also add overlays exported from other flakes:
       inputs.neovim-nightly-overlay.overlays.default
+      inputs.nixpkgs-wayland.overlays.default
 
       # Or define it inline, for example:
       # (final: prev: {
