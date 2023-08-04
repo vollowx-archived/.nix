@@ -1,7 +1,16 @@
 { inputs, lib, pkgs, config, outputs, ... }: {
-  imports = [ ../features/cli ];
+  imports = [ ./features/cli ];
+
+  nix = {
+    package = lib.mkDefault pkgs.nix;
+    settings = {
+      experimental-features = [ "nix-command" "flakes" "repl-flake" ];
+      warn-dirty = false;
+    };
+  };
 
   nixpkgs = {
+    # You can add overlays here
     overlays = [
       # Add overlays your own flake exports (from overlays and pkgs dir):
       outputs.overlays.additions
@@ -18,17 +27,11 @@
       #   });
       # })
     ];
+    # Configure your nixpkgs instance
     config = {
+      # Disable if you don't want unfree packages
       allowUnfree = true;
       allowUnfreePredicate = (_: true);
-    };
-  };
-
-  nix = {
-    package = lib.mkDefault pkgs.nix;
-    settings = {
-      experimental-features = [ "nix-command" "flakes" "repl-flake" ];
-      warn-dirty = false;
     };
   };
 

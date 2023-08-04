@@ -86,12 +86,6 @@
           specialArgs = { inherit inputs outputs; };
           modules = [ ./nixos/sakura/configuration.nix ];
         };
-
-        # If someday I get a new computer (probebly impossible)
-        # hostname = nixpkgs.lib.nixosSystem {
-        #   specialArgs = { inherit inputs outputs; };
-        #   modules = [ ./nixos/hostname/configuration.nix ];
-        # };
       };
 
       # Standalone home-manager configuration entrypoint

@@ -1,11 +1,10 @@
 { inputs, outputs, ... }: {
   # You can import other home-manager modules here
   imports = [
-    ./shared
+    ./shared.nix
 
     # If you want to use modules your own flake exports (from modules/home-manager):
     outputs.homeManagerModules.browsers.chromium
-    outputs.homeManagerModules.browsers.edge-dev
     outputs.homeManagerModules.browsers.firefox
     outputs.homeManagerModules.desktops.sway
     outputs.homeManagerModules.games.minecraft
