@@ -1,0 +1,8 @@
+set shell fish
+set icons true
+set mouse true
+set hidden true
+set ignorecase true
+
+set previewer ./previewer
+set cleaner ./cleaner

@@ -1,10 +1,12 @@
 { pkgs, ... }: {
   imports = [
     ./bash.nix
+    ./bat.nix
+    ./exa.nix
     ./fish.nix
     ./git.nix
+    ./lf.nix
     ./pfetch.nix
-    ./ranger.nix
     ./starship.nix
     ./tty-clock.nix
     ./xdg.nix
@@ -14,8 +16,8 @@
   home.packages = with pkgs; [
     bc # Calculator
     bottom # System viewer
+    file # File info
     ncdu # TUI disk usage
-    exa # Better ls
     ripgrep # Better grep
     fd # Better find
     jq # JSON pretty printer and manipulator
