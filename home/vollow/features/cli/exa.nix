@@ -1,6 +1,9 @@
 {
   programs.exa = {
     enable = true;
-    enableAlaiases = true;
+    enableAliases = true;
+    extraOptions = [ "--group-directories-first" ];
+    git = true;
+    icons = true;
   };
 }
