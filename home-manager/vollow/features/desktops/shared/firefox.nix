@@ -1,9 +1,9 @@
 {
   programs.firefox = {
     enable = true;
-    profiles.anyone = {
+    profiles.vollow = {
       isDefault = true;
-      name = "Anyone";
+      name = "Vollow";
     };
   };
 }

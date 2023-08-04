@@ -1,5 +1,8 @@
-{ inputs, ... }: {
-  i18n.inputMethod = { enabled = "fcitx5"; };
+{ inputs, pkgs, ... }: {
+  i18n.inputMethod = {
+    enabled = "fcitx5";
+    fcitx5.addons = with pkgs; [ fcitx5-chinese-addons fcitx5-anthy ];
+  };
 
   xdg.dataFile."fcitx5/themes/catppuccin-mocha".source =
     inputs.catppuccin-fcitx5 + "/src/catppuccin-mocha";

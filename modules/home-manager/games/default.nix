@@ -1,1 +1,0 @@
-{ minecraft = import ./minecraft.nix; }
