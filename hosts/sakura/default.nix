@@ -1,25 +1,21 @@
-{ inputs, outputs, pkgs, ... }: {
+{ inputs, pkgs, ... }: {
   # You can import other NixOS modules here
   imports = [
-    # If you want to use modules your own flake exports (from modules/nixos):
-    outputs.nixosModules.display.base
-    outputs.nixosModules.display.wayland
-    outputs.nixosModules.misc.virt-manager
-    outputs.nixosModules.printing.base
-    outputs.nixosModules.printing.graphical
-    outputs.nixosModules.printing.hp
-
-    # Or modules from other flakes (such as nixos-hardware):
     inputs.hardware.nixosModules.common-cpu-intel
     inputs.hardware.nixosModules.common-gpu-intel
     inputs.hardware.nixosModules.common-pc-ssd
 
-    # You can also split up your configuration and import pieces of it here:
-    ../shared
-    ./users.nix
-
-    # Import your generated (nixos-generate-config) hardware configuration
     ./hardware.nix
+
+    ../shared/base
+    ../shared/users/vollow
+
+    ../shared/optional/anti-gfw.nix
+    ../shared/optional/fonts.nix
+    ../shared/optional/pipewire.nix
+    ../shared/optional/printing.nix
+    ../shared/optional/virtualisation.nix
+    ../shared/optional/xdg-desktop-portal.nix
   ];
 
   hardware.opengl = {
@@ -34,8 +30,6 @@
   };
 
   networking.hostName = "sakura";
-
-  boot.loader.systemd-boot.enable = true;
 
   programs = {
     adb.enable = true;
