@@ -1,1 +1,1 @@
-{ import = [ ./cava.nix ./mpd.nix ]; }
+{ imports = [ ./cava.nix ./mpd.nix ]; }
