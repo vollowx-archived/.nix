@@ -19,14 +19,14 @@
     enable = true;
     settings = {
       theme = let
-        green = "#a6d189";
+        mauve = "#cba6f7";
         text = "#c6d0f5";
         blue = "#090909";
         surface0 = "#414559";
         teal = "#81c8be";
       in {
         lightTheme = false;
-        activeBorderColor = [ green "bold" ];
+        activeBorderColor = [ mauve "bold" ];
         inactiveBorderColor = [ text ];
         optionsTextColor = [ blue ];
         selectedLineBgColor = [ surface0 "default" ];

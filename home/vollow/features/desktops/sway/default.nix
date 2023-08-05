@@ -147,9 +147,9 @@ in {
         background = colors.base01;
         focused = {
           background = colors.base00;
-          border = colors.base0B;
-          childBorder = colors.base0B;
-          indicator = colors.base0B;
+          border = colors.base0E;
+          childBorder = colors.base0E;
+          indicator = colors.base0E;
           text = colors.base05;
         };
         focusedInactive = {
@@ -175,9 +175,9 @@ in {
         };
         urgent = {
           background = colors.base00;
-          border = colors.base06;
-          childBorder = colors.base06;
-          indicator = colors.base06;
+          border = colors.base08;
+          childBorder = colors.base08;
+          indicator = colors.base08;
           text = colors.base05;
         };
       };
