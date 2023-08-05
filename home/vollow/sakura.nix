@@ -6,6 +6,7 @@
     ./features/desktops/sway
     ./features/editors/neovim
     ./features/games
+    ./features/music
 
     # If you want to use modules your own flake exports (from modules/home-manager):
     # outputs.homeManagerModules.module
