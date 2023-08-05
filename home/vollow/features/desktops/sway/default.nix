@@ -3,6 +3,8 @@ let inherit (config.colorscheme) colors;
 in {
   imports = [ ../shared ../shared/wayland ./dunst.nix ];
 
+  home.packages = with pkgs; [ sov ];
+
   wayland.windowManager.sway = {
     enable = true;
     systemd.enable = true;
@@ -35,7 +37,7 @@ in {
       };
       startup = [{
         command =
-          "'rm -f /tmp/sovpipe && mkfifo /tmp/sovpipe && tail -f /tmp/sovpipe | ${pkgs.sov}/bin/sov'";
+          "'rm -f /tmp/sovpipe && mkfifo /tmp/sovpipe && tail -f /tmp/sovpipe | sov'";
       }];
       keybindings = let
         modifier = config.wayland.windowManager.sway.config.modifier;
@@ -49,7 +51,7 @@ in {
         "${modifier}+Escape" = "exec wlogout";
         "${modifier}+x" = "exec swaylock -f";
         "${modifier}+Shift+v" = "exec clipman pick --tool=wofi";
-        "${modifier}+o" = "exec ${pkgs.hyprpicker}/bin/hyprpicker -an";
+        "${modifier}+o" = "exec hyprpicker -a -n";
         "${modifier}+q" = "exec notify-status";
 
         "XF86AudioMute" = "exec volume -t";

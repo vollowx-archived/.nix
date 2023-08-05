@@ -2,7 +2,14 @@
   imports = [ ./swaylock.nix ];
 
   home = {
-    packages = with pkgs; [ wl-clipboard wlogout wofi brightnessctl wdisplays ];
+    packages = with pkgs; [
+      wl-clipboard
+      wlogout
+      wofi
+      brightnessctl
+      wdisplays
+      hyprpicker
+    ];
     sessionVariables = {
       # Wayland
       NIXOS_OZONE_WL = "1";
