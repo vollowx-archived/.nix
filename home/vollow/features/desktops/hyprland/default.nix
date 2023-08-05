@@ -1,4 +1,4 @@
-{
+{ pkgs, ... }: {
   imports = [ ../shared ../shared/wayland ];
 
   wayland.windowManager.hyprland = {
@@ -95,7 +95,7 @@
       general {
         gaps_in = 5
         gaps_out = 5
-        border_size = 2
+        border_size = 4
         col.active_border = $pink
         col.inactive_border = $surface0
         no_border_on_floating = true
@@ -113,13 +113,13 @@
       }
 
       decoration {
-        rounding = 0
+        rounding = 8
         multisample_edges = true
 
         active_opacity = 1.0
         inactive_opacity = 1.0
 
-        blur = false
+        blur = true
         blur_size = 10
         blur_passes = 4
         blur_ignore_opacity = false
@@ -167,9 +167,9 @@
       bind = SUPER, escape, exec, wlogout
       bind = SUPER, x, exec, swaylock -f
       bind = SUPER SHIFT, v, exec, clipman pick --tool=wofi
-      bind = SUPER, o, exec, hyprpicker -a -n
+      bind = SUPER, o, exec, ${pkgs.hyprpicker}/bin/hyprpicker -a -n
 
-      bind = SUPER, return, exec, foot
+      bind = SUPER, return, exec, kitty
       bind = SUPER, d, exec, wofi --show drun
       bind = SUPER SHIFT, q, killactive,
       bind = SUPER SHIFT, e, exit,
@@ -223,11 +223,10 @@
       # bindle = , XF86AudioMute, exec, wmctl vm
       # bindle = , XF86MonBrightnessUp, exec, wmctl b+
       # bindle = , XF86MonBrightnessDown, exec, wmctl b-
-      # bind = , print, exec, grimblast --notify copy area
-      # bind = CTRL, print, exec, grimblast --notify save screen
-      # bind = SHIFT, print, exec, grimblast --notify save area
+      bind = , print, exec, ${pkgs.grimblast}/bin/grimblast --notify copy area
+      bind = CTRL, print, exec, ${pkgs.grimblast}/bin/grimblast --notify save screen
+      bind = SHIFT, print, exec, ${pkgs.grimblast}/bin/grimblast --notify save area
 
-      # resize
       bind = SUPER, r, submap, resize
       submap = resize
         binde = , h, resizeactive, -10 0

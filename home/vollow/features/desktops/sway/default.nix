@@ -33,6 +33,10 @@ in {
           pointer_accel = "0.27";
         };
       };
+      startup = [{
+        command =
+          "'rm -f /tmp/sovpipe && mkfifo /tmp/sovpipe && tail -f /tmp/sovpipe | ${pkgs.sov}/bin/sov'";
+      }];
       keybindings = let
         modifier = config.wayland.windowManager.sway.config.modifier;
         terminal = config.wayland.windowManager.sway.config.terminal;
@@ -90,6 +94,9 @@ in {
 
         "${modifier}+Shift+space" = "floating toggle";
         "${modifier}+space" = "focus mode_toggle";
+
+        "--no-repeat ${modifier}+grave" = "exec 'echo 1 > /tmp/sovpipe'";
+        "--release ${modifier}+grave" = "exec 'echo 0 > /tmp/sovpipe'";
 
         "${modifier}+1" = "workspace number 1";
         "${modifier}+2" = "workspace number 2";
@@ -175,6 +182,11 @@ in {
         };
       };
     };
+
+    extraConfig = ''
+      bindgesture swipe:3:down workspace prev
+      bindgesture swipe:3:up workspace next
+    '';
   };
 
   services.swayidle = {
@@ -199,42 +211,5 @@ in {
         command = "swaymsg 'output * dpms off'";
       }
     ];
-  };
-
-  programs.swaylock = {
-    settings = {
-      daemonize = true;
-
-      line-uses-ring = false;
-      ignore-empty-password = true;
-      show-failed-attempts = false;
-
-      color = "00000000";
-
-      bs-hl-color = "#${colors.base08}";
-      key-hl-color = "#${colors.base0B}";
-
-      inside-color = "#${colors.base01}";
-      inside-clear-color = "#${colors.base01}";
-      inside-ver-color = "#${colors.base01}";
-      inside-wrong-color = "#${colors.base01}";
-
-      line-color = "#${colors.base00}";
-      line-ver-color = "#${colors.base00}";
-      line-clear-color = "#${colors.base00}";
-      line-wrong-color = "#${colors.base00}";
-
-      ring-color = "#${colors.base04}";
-      ring-clear-color = "#${colors.base06}";
-      ring-ver-color = "#${colors.base0D}";
-      ring-wrong-color = "#${colors.base08}";
-
-      separator-color = "00000000";
-
-      text-color = "#${colors.base04}";
-      text-clear-color = "#${colors.base06}";
-      text-ver-color = "#${colors.base0D}";
-      text-wrong-color = "#${colors.base08}";
-    };
   };
 }

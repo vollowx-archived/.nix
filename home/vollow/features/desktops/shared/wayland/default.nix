@@ -1,4 +1,6 @@
 { pkgs, ... }: {
+  imports = [ ./swaylock.nix ];
+
   home = {
     packages = with pkgs; [ wl-clipboard wlogout wofi brightnessctl wdisplays ];
     sessionVariables = {

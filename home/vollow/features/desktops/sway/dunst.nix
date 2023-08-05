@@ -67,12 +67,12 @@ let
     date=$(date +'%A, %#d %B %H:%M')
     battery=$(echo "$(cat /sys/class/power_supply/BAT0/capacity)%")
     if [ $(cat /sys/class/power_supply/BAT0/status) = 'Charging' ]; then
-      battery_status='(charging)'
+      battery_status=' (charging)'
     fi
     wifi=$(nmcli device show wlp0s20f3 | rg --replace ''' 'GENERAL.CONNECTION:                     ')
 
     ${notify-send} -r 69 \
-      -a "''${date}" "Battery at $battery $battery_status, Connected to $wifi" \
+      -a "''${date}" "Battery at $battery$battery_status" "Connected to $wifi" \
       -h int:value:"$battery" \
       -t 888 \
       -u low
