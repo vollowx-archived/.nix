@@ -1,4 +1,4 @@
-{
+{ pkgs, ... }: {
   imports = [
     ./gtk.nix
     ./qt.nix
@@ -10,4 +10,6 @@
     ./obs-studio.nix
     ./printing.nix
   ];
+
+  home.packages = with pkgs; [ blender cinnamon.nemo qq ];
 }
