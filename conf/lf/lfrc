@@ -3,6 +3,7 @@ set icons true
 set mouse true
 set hidden true
 set ignorecase true
+set ratios 1:2:3
 
-set previewer ./previewer
-set cleaner ./cleaner
+set previewer ~/.config/lf/previewer
+set cleaner ~/.config/lf/cleaner
