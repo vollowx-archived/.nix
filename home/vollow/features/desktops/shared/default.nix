@@ -9,6 +9,7 @@
     ./kitty.nix
     ./obs-studio.nix
     ./printing.nix
+    ./qutebrowser.nix
   ];
 
   home.packages = with pkgs; [ blender cinnamon.nemo qq ];
