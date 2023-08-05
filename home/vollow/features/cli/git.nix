@@ -1,4 +1,13 @@
-{
+{ pkgs, ... }:
+let
+  fromYAML = f:
+    let
+      jsonFile =
+        pkgs.runCommand "in.json" { nativeBuildInputs = [ pkgs.jc ]; } ''
+          jc --yaml < "${f}" > "$out"
+        '';
+    in builtins.elemAt (builtins.fromJSON (builtins.readFile jsonFile)) 0;
+in {
   programs.git = {
     enable = true;
     lfs.enable = true;
@@ -17,24 +26,11 @@
   };
   programs.lazygit = {
     enable = true;
-    settings = {
-      theme = let
-        mauve = "#cba6f7";
-        text = "#c6d0f5";
-        blue = "#090909";
-        surface0 = "#414559";
-        teal = "#81c8be";
-      in {
-        lightTheme = false;
-        activeBorderColor = [ mauve "bold" ];
-        inactiveBorderColor = [ text ];
-        optionsTextColor = [ blue ];
-        selectedLineBgColor = [ surface0 "default" ];
-        selectedRangeBgColor = [ surface0 ];
-        cherryPickedCommitBgColor = [ teal ];
-        cherryPickedCommitFgColor = [ blue ];
-        unstagedChangesColor = [ "red" ];
-      };
-    };
+    settings = { } // fromYAML (pkgs.fetchFromGitHub {
+      owner = "catppuccin";
+      repo = "lazygit";
+      rev = "f01edfd57fa2aa7cd69a92537a613bb3c91e65dd";
+      sha256 = "sha256-zjzDtXcGtUon4QbrZnlAPzngEyH56yy8TCyFv0rIbOA=";
+    } + "/themes/mocha.yml");
   };
 }
