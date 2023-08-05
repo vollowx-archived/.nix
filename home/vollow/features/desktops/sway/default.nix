@@ -49,7 +49,7 @@ in {
         "${modifier}+Escape" = "exec wlogout";
         "${modifier}+x" = "exec swaylock -f";
         "${modifier}+Shift+v" = "exec clipman pick --tool=wofi";
-        "${modifier}+o" = "exec hyprpicker -a -n";
+        "${modifier}+o" = "exec ${pkgs.hyprpicker}/bin/hyprpicker -an";
         "${modifier}+q" = "exec notify-status";
 
         "XF86AudioMute" = "exec volume -t";
