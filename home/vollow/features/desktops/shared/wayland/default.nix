@@ -3,12 +3,13 @@
 
   home = {
     packages = with pkgs; [
+      brightnessctl
+      hyprpicker
+      slurp
+      wdisplays
       wl-clipboard
       wlogout
       wofi
-      brightnessctl
-      wdisplays
-      hyprpicker
     ];
     sessionVariables = {
       # Wayland

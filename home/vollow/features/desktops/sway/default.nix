@@ -3,7 +3,7 @@ let inherit (config.colorscheme) colors;
 in {
   imports = [ ../shared ../shared/wayland ./dunst.nix ];
 
-  home.packages = with pkgs; [ sov ];
+  home.packages = with pkgs; [ sway-contrib.grimshot sov ];
 
   wayland.windowManager.sway = {
     enable = true;
@@ -61,12 +61,9 @@ in {
         "XF86MonBrightnessDown" = "exec brightness set 5%-";
         "XF86MonBrightnessUp" = "exec brightness set +5%";
 
-        "print" =
-          "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot --notify copy area";
-        "Ctrl+print" =
-          "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot --notify save screen";
-        "Shift+print" =
-          "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot --notify save area";
+        "print" = "exec grimshot --notify copy area";
+        "Ctrl+print" = "exec grimshot --notify save screen";
+        "Shift+print" = "exec grimshot --notify save area";
 
         "${modifier}+Return" = "exec ${terminal}";
         "${modifier}+Shift+q" = "kill";
@@ -191,11 +188,6 @@ in {
         };
       };
     };
-
-    extraConfig = ''
-      bindgesture swipe:3:down workspace prev
-      bindgesture swipe:3:up workspace next
-    '';
   };
 
   services.swayidle = {
