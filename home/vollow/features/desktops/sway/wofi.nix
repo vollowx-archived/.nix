@@ -31,12 +31,9 @@
       #entry {
         all: unset;
         padding: 4px 8px;
-        border-radius: 0;
-        border: none;
       }
 
       #entry:selected {
-        border: none;
         background: #45475a;
       }
 
