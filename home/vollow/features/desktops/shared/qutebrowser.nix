@@ -3,10 +3,8 @@
     enable = true;
     settings = {
       auto_save.session = true;
-      colors.webpage = {
-        preferred_color_scheme = "dark";
-        darkmode.enabled = true;
-      };
+      colors.webpage.preferred_color_scheme = "dark";
+      content.autoplay = false;
       scrolling.smooth = true;
     };
     extraConfig = builtins.readFile ../../../../../conf/qutebrowser/config.py;
