@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 let inherit (config.colorscheme) colors;
 in {
-  imports = [ ../shared ../shared/wayland ./dunst.nix ];
+  imports = [ ../shared ../shared/wayland ./dunst.nix ./wofi.nix ];
 
   home.packages = with pkgs; [ sway-contrib.grimshot sov ];
 

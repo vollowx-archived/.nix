@@ -1,6 +1,8 @@
 { pkgs, ... }: {
   imports = [ ../shared ];
 
+  home.packages = with pkgs; [ neovide ];
+
   programs.neovim = {
     enable = true;
     defaultEditor = true;
