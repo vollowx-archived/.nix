@@ -61,13 +61,12 @@ in {
         "XF86MonBrightnessDown" = "exec brightness set 5%-";
         "XF86MonBrightnessUp" = "exec brightness set +5%";
 
-        # https://github.com/NixOS/nixpkgs/issues/247231
-        # "print" =
-        #   "exec, ${pkgs.sway-contrib.grimshot}/bin/grimshot --notify copy area";
-        # "Ctrl+print" =
-        #   "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot --notify save screen";
-        # "Shift+print" =
-        #   "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot --notify save area";
+        "print" =
+          "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot --notify copy area";
+        "Ctrl+print" =
+          "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot --notify save screen";
+        "Shift+print" =
+          "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot --notify save area";
 
         "${modifier}+Return" = "exec ${terminal}";
         "${modifier}+Shift+q" = "kill";
