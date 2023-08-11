@@ -5,6 +5,7 @@
 
     ./fcitx5.nix
 
+    ./chromium.nix
     ./firefox.nix
     ./kitty.nix
     ./obs-studio.nix
