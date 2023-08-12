@@ -135,14 +135,26 @@ in {
       };
 
       output = {
-        eDP-1 = { bg = "#${colors.base01} solid_color"; };
-        HDMI-A-1 = { bg = "#${colors.base01} solid_color"; };
+        # eDP-1 = { bg = "#${colors.base01} solid_color"; };
+        # HDMI-A-1 = { bg = "#${colors.base01} solid_color"; };
+        eDP-1 = { bg = "~/.local/share/backgrounds/BeachAndGirl.jpg fill"; };
+        HDMI-A-1 = { bg = "~/.local/share/backgrounds/BeachAndGirl.jpg fill"; };
       };
       seat = { "*" = { hide_cursor = "when-typing enable"; }; };
       bars = [ ];
       window = {
         border = 2;
         titlebar = false;
+        commands = [
+          {
+            command = "floating enable";
+            criteria = { class = ".*"; };
+          }
+          {
+            command = "floating enable";
+            criteria = { app_id = ".*"; };
+          }
+        ];
       };
       floating = {
         border = 2;
