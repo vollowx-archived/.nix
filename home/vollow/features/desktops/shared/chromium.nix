@@ -9,6 +9,7 @@
       "jghecgabfgfdldnmbfkhmffcabddioke" # Volume Master
     ];
     commandLineArgs = [
+      "--gtk-version=4"
       "--force-dark-mode"
       "--enable-gpu-rasterization"
       "--enable-oop-rasterization"
