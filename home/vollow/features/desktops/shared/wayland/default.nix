@@ -8,7 +8,6 @@
       slurp
       wdisplays
       wl-clipboard
-      wlogout
       wofi
     ];
     sessionVariables = {

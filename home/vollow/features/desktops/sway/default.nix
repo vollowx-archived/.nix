@@ -1,9 +1,31 @@
 { config, pkgs, ... }:
-let inherit (config.colorscheme) colors;
+let
+  inherit (config.colorscheme) colors;
+  powermenu = pkgs.writeShellScriptBin "powermenu" ''
+    #!/usr/bin/env bash
+
+    op=$(echo -e "󰌾 lock\n󰗽 logout\n󰒲 suspend\n󰜗 hibernate\n󰐥 poweroff\n󰦛 reboot" | wofi -i --dmenu | awk '{print tolower($2)}')
+
+    case $op in
+
+    halt) ;&
+    reboot) ;&
+    suspend) ;&
+    hibernate)
+      systemctl $op
+      ;;
+    lock)
+      swaylock -f
+      ;;
+    logout)
+      loginctl kill-session ''${XDG_SESSION_ID-}
+      ;;
+    esac
+  '';
 in {
   imports = [ ../shared ../shared/wayland ./dunst.nix ./wofi.nix ];
 
-  home.packages = with pkgs; [ sway-contrib.grimshot sov ];
+  home.packages = [ powermenu pkgs.sway-contrib.grimshot pkgs.sov ];
 
   wayland.windowManager.sway = {
     enable = true;
@@ -48,7 +70,7 @@ in {
         up = config.wayland.windowManager.sway.config.up;
         right = config.wayland.windowManager.sway.config.right;
       in {
-        "${modifier}+Escape" = "exec wlogout";
+        "${modifier}+Escape" = "exec ${powermenu}/bin/powermenu";
         "${modifier}+x" = "exec swaylock -f";
         "${modifier}+Shift+v" = "exec clipman pick --tool=wofi";
         "${modifier}+o" = "exec hyprpicker -a -n";
