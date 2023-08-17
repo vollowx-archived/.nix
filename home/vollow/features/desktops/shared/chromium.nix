@@ -4,7 +4,6 @@
     extensions = [
       "cjpalhdlnbpafiamejdnhcphjbkeiagm" # uBlock Origin
       "clngdbkpkpeebahjckkjfobafhncgmne" # stylus
-      "eimadpbcbfnmbkopoojfekhnkhdbieeh" # Dark Reader
       "mnjggcdmjocbbbhaepdhchncahnbgone" # SponsorBlock
       "jghecgabfgfdldnmbfkhmffcabddioke" # Volume Master
     ];
