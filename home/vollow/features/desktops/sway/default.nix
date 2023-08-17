@@ -137,8 +137,8 @@ in {
       output = {
         # eDP-1 = { bg = "#${colors.base01} solid_color"; };
         # HDMI-A-1 = { bg = "#${colors.base01} solid_color"; };
-        eDP-1 = { bg = "~/.local/share/backgrounds/BeachAndGirl.jpg fill"; };
-        HDMI-A-1 = { bg = "~/.local/share/backgrounds/BeachAndGirl.jpg fill"; };
+        eDP-1 = { bg = "~/.local/share/backgrounds/Blossom.png fill"; };
+        HDMI-A-1 = { bg = "~/.local/share/backgrounds/Blossom.png fill"; };
       };
       seat = { "*" = { hide_cursor = "when-typing enable"; }; };
       bars = [ ];
