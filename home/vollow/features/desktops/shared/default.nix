@@ -9,6 +9,7 @@
     ./firefox.nix
     ./kitty.nix
     ./obs-studio.nix
+    ./obsidian.nix
     ./printing.nix
     ./qutebrowser.nix
   ];
